@@ -106,7 +106,7 @@ quant_terminal/
 tests/                arithmetic, causality, risk, critic, CLI and UI checks
 examples/             executed demonstration artifacts
 docs/                 research design, architecture decisions and screenshot
-.github/workflows/    Linux/Windows verification and offline demo
+docs/ci-workflow.yml  reviewed Linux/Windows workflow; activation pending access
 ```
 
 ## Research philosophy
@@ -149,7 +149,7 @@ uv build
 
 Tests include hand-calculated fees/slippage and PnL, future-bar mutation, target caps, rejected orders, next-open drawdown liquidation, unresolved final-close risk, cost-basis reconciliation, critic behavior, experiment identities, exported reports and actual Streamlit submissions.
 
-[Recorded local verification](examples/verification.md). GitHub Actions checks Linux and Windows; inspect the workflow run for its current result.
+[Recorded verification](examples/verification.md), including a fresh clone of the published repository. The [reviewed CI workflow](docs/ci-workflow.yml) targets Linux and Windows, but activation is pending: the CLI token lacks the GitHub `workflow` scope and the connected GitHub App returned 403. No remote CI pass is claimed. The complete `.github/workflows/ci.yml` is prepared locally for publication after access is granted.
 
 ## Data and licensing
 

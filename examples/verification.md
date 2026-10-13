@@ -26,6 +26,7 @@ Local environment: Windows, CPython 3.12.13, uv 0.12.3, Streamlit 1.65.0, Matplo
 | Fresh installed-wheel run | Both baselines executed from a directory outside the repository |
 | Installed wheel vs source artifacts | Complete numerical JSON objects equal |
 | Historical source integrity | All 36 archive SHA-256 values verified; 1096 consecutive valid daily bars |
+| Fresh clone of the public GitHub repository | Both demo baselines and all 26 tests passed |
 
 See [test-output.txt](test-output.txt) for the actual full local test log, and
 [evidence.json](evidence.json) for checksums, sizes, metrics and engine identity.
@@ -37,7 +38,7 @@ Browser captures:
 [HTML report](../docs/images/research-report.jpg).
 Captures include the actual experiment IDs, not illustrative placeholders.
 
-GitHub Actions is configured for Linux and Windows, Python 3.11 and 3.12. This document records local evidence; inspect the [workflow runs](https://github.com/dancho133/quant-terminal/actions) for the current remote result.
+The [reviewed workflow](../docs/ci-workflow.yml) is prepared for Linux and Windows, Python 3.11 and 3.12. GitHub refused its publication: the CLI token lacks `workflow` scope and the connected App returned 403. The workflow is preserved locally at `.github/workflows/ci.yml`; the public mirror is not active CI. No remote CI pass is claimed. Local and fresh-clone execution are verified separately.
 
 Dockerfile is provided, but Docker was unavailable locally and no container build/run is claimed.
 No live broker connection, real-money order, LLM/API invocation, or production deployment was performed.
