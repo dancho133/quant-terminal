@@ -1,8 +1,10 @@
 """Regression checks: malformed data, trailing-only features and hypothesis state."""
 
+import tempfile
 import unittest
 from dataclasses import replace
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 
 
 def bars_at(prices):
@@ -15,6 +17,23 @@ def bars_at(prices):
 
 
 class DataFeatureTests(unittest.TestCase):
+    def test_csv_rejects_extra_and_missing_row_fields(self):
+        from quant_terminal.data import load_dataset
+
+        header = "timestamp,open,high,low,close,volume\n"
+        valid = "2025-01-01T00:00:00Z,100,101,99,100,100\n"
+        broken = (
+            "2025-01-02T00:00:00Z,100,101,99,100,100,extra\n",
+            "2025-01-02T00:00:00Z,100,101,99,100,1,000\n",
+            "2025-01-02T00:00:00Z,100,101,99,100\n",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "data.csv"
+            for row in broken:
+                path.write_text(header + valid + row, encoding="utf-8")
+                with self.subTest(row=row), self.assertRaisesRegex(ValueError, "row 3"):
+                    load_dataset("BTCUSDT", path)
+
     def test_ohlcv_rejects_nonfinite_and_impossible_ranges(self):
         from quant_terminal.data import validate_bars
 

@@ -88,6 +88,8 @@ class CSVProvider:
                 "description": "User-supplied OHLCV; provenance not independently verified.",
             }
         )
+        if not isinstance(provenance, dict):
+            raise ValueError("Dataset provenance manifest must be a JSON object.")
         if provenance.get("asset", asset) != asset:
             raise ValueError("Dataset metadata asset does not match the requested asset.")
         csv_hash = hashlib.sha256(raw).hexdigest()
@@ -97,14 +99,18 @@ class CSVProvider:
             reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")))
             if reader.fieldnames != ["timestamp", "open", "high", "low", "close", "volume"]:
                 raise ValueError("CSV columns must be timestamp,open,high,low,close,volume.")
-            bars = tuple(
-                Bar(
-                    datetime.fromisoformat(row["timestamp"].replace("Z", "+00:00")),
-                    *(float(row[key]) for key in ("open", "high", "low", "close", "volume")),
+            parsed = []
+            for row_number, row in enumerate(reader, start=2):
+                if None in row or any(row.get(key) in (None, "") for key in reader.fieldnames):
+                    raise ValueError(f"CSV row {row_number}: expected exactly six nonempty fields.")
+                parsed.append(
+                    Bar(
+                        datetime.fromisoformat(row["timestamp"].replace("Z", "+00:00")),
+                        *(float(row[key]) for key in ("open", "high", "low", "close", "volume")),
+                    )
                 )
-                for row in reader
-            )
-        except (KeyError, TypeError, UnicodeError, OverflowError) as exc:
+            bars = tuple(parsed)
+        except (KeyError, TypeError, UnicodeError, OverflowError, csv.Error) as exc:
             raise ValueError(f"Malformed OHLCV CSV: {exc}") from exc
         return dataset_from_bars(asset, bars, provenance | {"csv_sha256": csv_hash})
 
