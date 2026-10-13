@@ -2,6 +2,8 @@
 
 Agentic market research and risk sandbox.
 
+[![Verify research pipeline](https://github.com/dancho133/quant-terminal/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/dancho133/quant-terminal/actions/workflows/ci.yml)
+
 Quant Terminal runs two transparent baseline hypotheses through historical simulation, independent risk controls and a deterministic research critic. Each run produces a complete accounting ledger, reproducible experiment identity, robustness checks and an exportable research report. A small Streamlit dashboard displays those same results and lets you rerun the experiment with explicit parameters. The included historical snapshot makes the demonstration work without a market-data service or an LLM key after dependencies are installed.
 
 **AI proposes. Evidence tests. Risk constrains. Critic challenges.**

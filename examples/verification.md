@@ -27,6 +27,7 @@ Local environment: Windows, CPython 3.12.13, uv 0.12.3, Streamlit 1.65.0, Matplo
 | Installed wheel vs source artifacts | Complete numerical JSON objects equal |
 | Historical source integrity | All 36 archive SHA-256 values verified; 1096 consecutive valid daily bars |
 | Fresh clone of the public GitHub repository | Both demo baselines and all 26 tests passed |
+| GitHub Actions: Linux / Windows, Python 3.11 / 3.12 | All four jobs passed lint, formatting, 26 tests, offline demo and packaging |
 
 See [test-output.txt](test-output.txt) for the actual full local test log, and
 [evidence.json](evidence.json) for checksums, sizes, metrics and engine identity.
@@ -38,7 +39,7 @@ Browser captures:
 [HTML report](../docs/images/research-report.jpg).
 Captures include the actual experiment IDs, not illustrative placeholders.
 
-The [active workflow](../.github/workflows/ci.yml) targets Linux and Windows with Python 3.11 and 3.12. It runs lint, formatting, all tests, both offline baselines and packaging. Access was explicitly approved and the GitHub CLI token's workflow scope was verified before publication. Inspect [GitHub Actions](https://github.com/dancho133/quant-terminal/actions) for the current remote result; local and fresh-clone evidence is recorded separately here.
+The [active workflow](../.github/workflows/ci.yml) passed on all four Linux/Windows × Python 3.11/3.12 combinations. Each job completed lint, formatting, 26 tests, both offline baselines and packaging, then uploaded research artifacts. The [verified run](https://github.com/dancho133/quant-terminal/actions/runs/38436912176) checked numerical source commit 554387d65e882fd91292b57d9dd07c29682744c0. [ci-result.json](ci-result.json) records the actual run and job results. Later documentation commits do not change that numerical source; inspect [GitHub Actions](https://github.com/dancho133/quant-terminal/actions) for the latest head's result.
 
 Dockerfile is provided, but Docker was unavailable locally and no container build/run is claimed.
 No live broker connection, real-money order, LLM/API invocation, or production deployment was performed.
