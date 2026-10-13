@@ -38,7 +38,7 @@ Browser captures:
 [HTML report](../docs/images/research-report.jpg).
 Captures include the actual experiment IDs, not illustrative placeholders.
 
-The [reviewed workflow](../docs/ci-workflow.yml) is prepared for Linux and Windows, Python 3.11 and 3.12. GitHub refused its publication: the CLI token lacks `workflow` scope and the connected App returned 403. The workflow is preserved locally at `.github/workflows/ci.yml`; the public mirror is not active CI. No remote CI pass is claimed. Local and fresh-clone execution are verified separately.
+The [active workflow](../.github/workflows/ci.yml) targets Linux and Windows with Python 3.11 and 3.12. It runs lint, formatting, all tests, both offline baselines and packaging. Access was explicitly approved and the GitHub CLI token's workflow scope was verified before publication. Inspect [GitHub Actions](https://github.com/dancho133/quant-terminal/actions) for the current remote result; local and fresh-clone evidence is recorded separately here.
 
 Dockerfile is provided, but Docker was unavailable locally and no container build/run is claimed.
 No live broker connection, real-money order, LLM/API invocation, or production deployment was performed.
