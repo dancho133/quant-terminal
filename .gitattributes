@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+# CommonMark hard breaks and Matplotlib SVG path whitespace are intentional.
+*.md whitespace=-blank-at-eol
+*.svg whitespace=-blank-at-eol
+examples/**/report.html whitespace=-blank-at-eol

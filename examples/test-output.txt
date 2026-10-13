@@ -1,0 +1,34 @@
+test_drawdown_latches_and_liquidates_at_next_open_with_gap_loss (test_backtest_risk.BacktestRiskTests.test_drawdown_latches_and_liquidates_at_next_open_with_gap_loss) ... ok
+test_final_close_halt_retains_unresolved_risk_exposure (test_backtest_risk.BacktestRiskTests.test_final_close_halt_retains_unresolved_risk_exposure) ... ok
+test_final_holdings_are_marked_without_fabricating_a_terminal_exit (test_backtest_risk.BacktestRiskTests.test_final_holdings_are_marked_without_fabricating_a_terminal_exit) ... ok
+test_future_mutation_does_not_change_earlier_ledger_or_fills (test_backtest_risk.BacktestRiskTests.test_future_mutation_does_not_change_earlier_ledger_or_fills) ... ok
+test_next_open_fills_reconcile_slippage_fees_and_realized_pnl (test_backtest_risk.BacktestRiskTests.test_next_open_fills_reconcile_slippage_fees_and_realized_pnl) ... ok
+test_rebalancing_reconciles_closed_plus_open_cost_basis (test_backtest_risk.BacktestRiskTests.test_rebalancing_reconciles_closed_plus_open_cost_basis) ... ok
+test_risk_rejects_invalid_oversized_unaffordable_and_short_orders (test_backtest_risk.BacktestRiskTests.test_risk_rejects_invalid_oversized_unaffordable_and_short_orders) ... ok
+test_target_caps_apply_to_post_cost_equity_and_preserve_proposal (test_backtest_risk.BacktestRiskTests.test_target_caps_apply_to_post_cost_equity_and_preserve_proposal) ... ok
+test_dashboard_runs_all_five_tabs_and_submits_a_new_strategy (test_dashboard.DashboardTests.test_dashboard_runs_all_five_tabs_and_submits_a_new_strategy) ... 2026-10-13 19:36:49.967 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_form_draft_does_not_replace_displayed_experiment (test_dashboard.DashboardTests.test_form_draft_does_not_replace_displayed_experiment) ... 2026-10-13 19:36:54.113 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_structured_critic_fields_render_without_arrow_type_repair (test_dashboard.DashboardTests.test_structured_critic_fields_render_without_arrow_type_repair) ... 2026-10-13 19:36:55.933 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_csv_rejects_extra_and_missing_row_fields (test_data_features.DataFeatureTests.test_csv_rejects_extra_and_missing_row_fields) ... ok
+test_daily_schema_rejects_missing_duplicate_and_unordered_bars (test_data_features.DataFeatureTests.test_daily_schema_rejects_missing_duplicate_and_unordered_bars) ... ok
+test_features_use_trailing_values_and_preserve_prefix (test_data_features.DataFeatureTests.test_features_use_trailing_values_and_preserve_prefix) ... ok
+test_ohlcv_rejects_nonfinite_and_impossible_ranges (test_data_features.DataFeatureTests.test_ohlcv_rejects_nonfinite_and_impossible_ranges) ... ok
+test_parameters_reject_bad_windows_and_nonfinite_risk (test_data_features.DataFeatureTests.test_parameters_reject_bad_windows_and_nonfinite_risk) ... ok
+test_strategy_is_flat_during_warmup_and_has_stateful_exit (test_data_features.DataFeatureTests.test_strategy_is_flat_during_warmup_and_has_stateful_exit) ... ok
+test_cli_generates_artifact_and_invalid_capital_fails_cleanly (test_experiment.ExperimentTests.test_cli_generates_artifact_and_invalid_capital_fails_cleanly) ... ok
+test_critic_flags_fragile_costs_parameters_and_windows (test_experiment.ExperimentTests.test_critic_flags_fragile_costs_parameters_and_windows) ... ok
+test_critic_pass_caution_reject_have_structured_evidence (test_experiment.ExperimentTests.test_critic_pass_caution_reject_have_structured_evidence) ... ok
+test_custom_csv_reports_preserve_unknown_provenance_and_terms (test_experiment.ExperimentTests.test_custom_csv_reports_preserve_unknown_provenance_and_terms) ... ok
+test_experiment_id_is_stable_and_changes_with_config_data_and_engine (test_experiment.ExperimentTests.test_experiment_id_is_stable_and_changes_with_config_data_and_engine) ... ok
+test_malformed_manifest_and_oversized_csv_fail_without_traceback (test_experiment.ExperimentTests.test_malformed_manifest_and_oversized_csv_fail_without_traceback) ... ok
+test_reports_are_self_contained_and_preserve_rejection (test_experiment.ExperimentTests.test_reports_are_self_contained_and_preserve_rejection) ... ok
+test_semantically_equal_numeric_defaults_share_identity (test_experiment.ExperimentTests.test_semantically_equal_numeric_defaults_share_identity) ... ok
+test_successful_order_rejection_does_not_reject_research (test_experiment.ExperimentTests.test_successful_order_rejection_does_not_reject_research) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 15.003s
+
+OK

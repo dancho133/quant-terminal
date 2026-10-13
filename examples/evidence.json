@@ -1,0 +1,116 @@
+[
+  {
+    "engine_sha256": "c66a0f10e8324bc3910a1adb42ec0628707966ec3ed27518fde30c9c1f05fdbc",
+    "experiment_id": "bbc87bc1d4ee46e327d3",
+    "files": {
+      "drawdown.svg": {
+        "bytes": 33536,
+        "sha256": "97f16e0c0d9c08eedfce53298b8c39e50671b467c9ecf64847029123cc6e4c6d"
+      },
+      "equity.svg": {
+        "bytes": 30469,
+        "sha256": "c15b544244ccd5a63c3180aefa2ac7399a20962606c62ca63039918d51c521fe"
+      },
+      "experiment.json": {
+        "bytes": 806687,
+        "sha256": "49f77dc77c900f3f3c01f5c3ab328f4c49ada55d3a7d45dd143508311eafdad1"
+      },
+      "exposure.svg": {
+        "bytes": 12561,
+        "sha256": "0ea052b598c6f2e7b917d9e36c334c5e2ede226a816e7854edfea78fc24087ae"
+      },
+      "report.html": {
+        "bytes": 199494,
+        "sha256": "50a40a8495408349e407d618d80ff54760e60f644e40e1b655a8e4132a710404"
+      },
+      "report.md": {
+        "bytes": 5519,
+        "sha256": "5466128dc6b220fd49312e26e171ce6964b703b9e8fbda4ab52d9b4a6d2550d3"
+      },
+      "trades.csv": {
+        "bytes": 26850,
+        "sha256": "269ceb3cb3ce88b5ac6c22cb2125e8809bddef0171b6373ca7cf3e34600be476"
+      }
+    },
+    "metrics": {
+      "annualized_volatility": 0.04908808371808001,
+      "asset_concentration": 1.0,
+      "average_exposure": 0.07466443133005204,
+      "benchmark_return": -0.07340553270062156,
+      "ending_equity": 9938.165900705211,
+      "evaluation_bars": 365,
+      "fees": 72.042853256618,
+      "fill_count": 123,
+      "max_drawdown": 0.03563225424623406,
+      "max_exposure": 0.2618506105315262,
+      "number_of_trades": 14,
+      "same_risk_benchmark_return": -0.004798478181275989,
+      "sharpe_like": -0.10187297085183436,
+      "slippage_cost": 36.02143818585239,
+      "total_return": -0.006183409929478856,
+      "transaction_costs": 108.06429144247039,
+      "turnover": 7.204285325661799,
+      "win_rate": 0.42857142857142855
+    },
+    "strategy": "momentum",
+    "verdict": "REJECT",
+    "wheel_numerical_artifact_equal": true
+  },
+  {
+    "engine_sha256": "c66a0f10e8324bc3910a1adb42ec0628707966ec3ed27518fde30c9c1f05fdbc",
+    "experiment_id": "7838b1e5f5eb082c7e1b",
+    "files": {
+      "drawdown.svg": {
+        "bytes": 34605,
+        "sha256": "c133c3086a4b57495551169983ac21753e87ec38f3ab0757b3b6d15823c3bfd6"
+      },
+      "equity.svg": {
+        "bytes": 31546,
+        "sha256": "d7b3e536f9308d7ba549bdf8c82feebb2edfb16b088fc87d103897d1c5d89953"
+      },
+      "experiment.json": {
+        "bytes": 859270,
+        "sha256": "5b002120a6065e4dcf8da725d08948e53c77844274b33b4e0d5ad56adf7f2343"
+      },
+      "exposure.svg": {
+        "bytes": 13604,
+        "sha256": "128ff7594eaecd49f4801cd1fca67c2100d39b3916bd3cf53c836a2277207ff0"
+      },
+      "report.html": {
+        "bytes": 241829,
+        "sha256": "b68d0452f8c74c9805fd8249ffa54b697ed27d5f363a3a5317e9e3cfa340c3ab"
+      },
+      "report.md": {
+        "bytes": 5179,
+        "sha256": "a65705b3ef2e84d0407b6d0d3a777abf88374b5a92a93cd6526da668e3c20133"
+      },
+      "trades.csv": {
+        "bytes": 36090,
+        "sha256": "5d0e15808f8ff4a5f0431154607f0232391b3158e235fe5ddaeef32594440570"
+      }
+    },
+    "metrics": {
+      "annualized_volatility": 0.07621675315835272,
+      "asset_concentration": 1.0,
+      "average_exposure": 0.10422387098328068,
+      "benchmark_return": -0.07340553270062156,
+      "ending_equity": 10475.760619557159,
+      "evaluation_bars": 365,
+      "fees": 83.73247931683244,
+      "fill_count": 167,
+      "max_drawdown": 0.05632948299621632,
+      "max_exposure": 0.26746022752646076,
+      "number_of_trades": 15,
+      "same_risk_benchmark_return": -0.004798478181275989,
+      "sharpe_like": 0.6477996400108276,
+      "slippage_cost": 41.86638999828297,
+      "total_return": 0.047576061955715954,
+      "transaction_costs": 125.59886931511541,
+      "turnover": 8.373247931683244,
+      "win_rate": 0.8666666666666667
+    },
+    "strategy": "mean_reversion",
+    "verdict": "CAUTION",
+    "wheel_numerical_artifact_equal": true
+  }
+]
