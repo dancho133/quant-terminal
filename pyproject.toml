@@ -7,7 +7,7 @@ name = "quant-terminal"
 version = "0.1.0"
 description = "Deterministic market research and risk sandbox."
 requires-python = ">=3.11,<3.15"
-dependencies = ["streamlit>=1.50,<2", "matplotlib>=3.9,<4"]
+dependencies = ["streamlit>=1.65,<2", "matplotlib>=3.11,<4"]
 
 [project.scripts]
 quant-terminal = "quant_terminal.run:main"
