@@ -1,0 +1,122 @@
+{
+  "artifact_paths": {
+    "mean_reversion": "C:\\Users\\\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\\Documents\\Codex\\quant-terminal\\artifacts\\source-clean\\67c6d758d1a82087d6ed",
+    "momentum": "C:\\Users\\\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\\Documents\\Codex\\quant-terminal\\artifacts\\source-clean\\986c27a8aad849958ea3"
+  },
+  "checked_commit": "77dbb5e0b9caf355fb31f052f4ddf9fb0202a230",
+  "checks": [
+    {
+      "name": "finite_numbers",
+      "passed": true,
+      "strategy": "momentum"
+    },
+    {
+      "name": "configuration_and_identity",
+      "passed": true,
+      "strategy": "momentum"
+    },
+    {
+      "name": "strategy_accounting_causality_risk",
+      "passed": true,
+      "strategy": "momentum"
+    },
+    {
+      "name": "comparator_accounting_causality_risk",
+      "passed": true,
+      "strategy": "momentum"
+    },
+    {
+      "name": "robustness_and_critic",
+      "passed": true,
+      "strategy": "momentum"
+    },
+    {
+      "name": "export_structure_and_csv",
+      "passed": true,
+      "strategy": "momentum"
+    },
+    {
+      "name": "cross_environment_numeric_comparison",
+      "passed": true,
+      "strategy": "momentum"
+    },
+    {
+      "name": "finite_numbers",
+      "passed": true,
+      "strategy": "mean_reversion"
+    },
+    {
+      "name": "configuration_and_identity",
+      "passed": true,
+      "strategy": "mean_reversion"
+    },
+    {
+      "name": "strategy_accounting_causality_risk",
+      "passed": true,
+      "strategy": "mean_reversion"
+    },
+    {
+      "name": "comparator_accounting_causality_risk",
+      "passed": true,
+      "strategy": "mean_reversion"
+    },
+    {
+      "name": "robustness_and_critic",
+      "passed": true,
+      "strategy": "mean_reversion"
+    },
+    {
+      "name": "export_structure_and_csv",
+      "passed": true,
+      "strategy": "mean_reversion"
+    },
+    {
+      "name": "cross_environment_numeric_comparison",
+      "passed": true,
+      "strategy": "mean_reversion"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\\Documents\\Codex\\quant-terminal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "quant_terminal.run",
+        "--strategy",
+        "momentum",
+        "--output",
+        "C:\\Users\\\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\\Documents\\Codex\\quant-terminal\\artifacts\\source-clean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\\Documents\\Codex\\quant-terminal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "quant_terminal.run",
+        "--strategy",
+        "mean_reversion",
+        "--output",
+        "C:\\Users\\\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\\Documents\\Codex\\quant-terminal\\artifacts\\source-clean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "commit_source": "git",
+  "dataset_hash": "c2d7fb5f1c417ebe63a471b88ae2df27c80e0cb7de95e4361ea5ae0f98628c91",
+  "engine_hash": "cad560d776cb4be902fd983a28edf6a27815dd46e94cc173edb436e7bb09cce8",
+  "failures": [],
+  "hypothesis_verdicts": {
+    "mean_reversion": "CAUTION",
+    "momentum": "REJECT"
+  },
+  "numeric_comparison": {
+    "absolute_tolerance": 1e-10,
+    "figures": "structure only; never byte equality",
+    "ignored_json_paths": [
+      "reproducibility.python"
+    ],
+    "relative_tolerance": 1e-10
+  },
+  "worktree_dirty": false
+}

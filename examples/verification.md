@@ -1,45 +1,42 @@
-# Executed verification — October 13, 2026
+# Executed verification — October 14, 2026
 
-Local environment: Windows, CPython 3.12.13, uv 0.12.3, Streamlit 1.65.0, Matplotlib 3.11.2, Ruff 0.17.0. Dependencies are recorded in uv.lock.
+Preparation for independent technical review. This record describes developer-run evidence, not BYTRADER certification or investment validation. Source engine SHA-256: cad560d776cb4be902fd983a28edf6a27815dd46e94cc173edb436e7bb09cce8. Dataset SHA-256: c2d7fb5f1c417ebe63a471b88ae2df27c80e0cb7de95e4361ea5ae0f98628c91.
 
-| Check | Actual result |
+## Current local execution
+
+Windows, CPython 3.12.13. uv.lock pins the installed dependencies. The numerical source differs from the e7cf3bd baseline.
+
+| Command / check | Actual result |
 |---|---|
-| Dependency installation / locked sync | Completed |
-| Ruff lint | All checks passed |
-| Ruff format check | All source files already formatted |
-| Full unittest suite | 26 tests, 0 failures/errors |
-| Hand-calculated next-open fees, slippage and PnL | Passed |
-| Risk authorization, target cap, drawdown latch and delayed liquidation | Passed |
-| Final holdings, unfilled orders and cost-basis reconciliation | Passed |
-| Future-bar feature/ledger/fill mutation | Passed |
-| Critic PASS/CAUTION/REJECT and robustness checks | Passed |
-| Int/float equivalents across API/CLI defaults | Same experiment identity |
-| Surplus/missing CSV fields, malformed manifest and parser errors | Controlled rejection with no artifact |
-| User CSV source/terms reporting | No invented provider attribution |
-| One-command real dashboard startup | Executed; localhost server started |
-| API / CLI / dashboard default run | Momentum ID bbc87bc1d4ee46e327d3 |
-| Mean-reversion form submission | ID 7838b1e5f5eb082c7e1b, CAUTION |
-| Browser inspection | All five tabs, actual charts, controls, criticism and JSON download checked |
-| Self-contained HTML report | Opened in browser; SVG figures and structured evidence rendered |
-| Offline two-baseline run | Executed with uv --offline --locked |
-| Wheel and source distribution | Successfully built |
-| Fresh installed-wheel run | Both baselines executed from a directory outside the repository |
-| Installed wheel vs source artifacts | Complete numerical JSON objects equal |
-| Historical source integrity | All 36 archive SHA-256 values verified; 1096 consecutive valid daily bars |
-| Fresh clone of the public GitHub repository | Both demo baselines and all 26 tests passed |
-| GitHub Actions: Linux / Windows, Python 3.11 / 3.12 | All four jobs passed lint, formatting, 26 tests, offline demo and packaging |
+| uv sync --locked --group dev | Exit 0; 47 packages resolved, 45 checked |
+| uv run --locked ruff check . | Exit 0; All checks passed |
+| uv run --locked ruff format --check . | Exit 0; 35 Python files already formatted |
+| uv run --locked python -m unittest discover -s tests -v | Exit 0; **48 tests**, no failures/errors |
+| uv run --offline --locked quant-terminal-demo --no-ui | Exit 0; both real experiments exported |
+| uv run --offline --locked quant-terminal-verify | Exit 0; **12 aggregate checks**, failures empty |
+| uv build | Wheel and source distribution built, exit 0 |
+| Locked runtime requirements installed in a new venv | 43 dependencies installed; no system-site-packages |
+| Built wheel installed, run outside the source checkout | Import path is the new venv's Lib/site-packages/quant_terminal |
+| Installed wheel verifier with --reference-dir source results | Exit 0; **14 checks**, both canonical JSON artifacts equal within stated tolerances |
+| Fresh public branch clone + fresh locked venv | Ruff, all 47 tests, offline demo and verifier/reference comparison passed; checkout stayed clean |
+| GitHub Actions for source commit 77dbb5e | Four jobs passed: Ubuntu/Windows × Python 3.11/3.12; lint, format, 47 tests, demo, verification and packaging |
+| Actual browser | Updated UI, all five tabs, real mean_reversion form submission and both final IDs checked |
+| Report rendering | Self-contained updated HTML exported to disk; embedded figures rendered in browser |
 
-See [test-output.txt](test-output.txt) for the actual full local test log, and
-[evidence.json](evidence.json) for checksums, sizes, metrics and engine identity.
+The test log contains an intentionally injected checksum failure message from the bootstrap-error regression; the **suite summary is 48 tests / OK / exit 0**. Streamlit AppTest can emit its standard bare-mode missing ScriptRunContext warning; no UI exception or Arrow repair was observed.
 
-Browser captures:
-[overview](../docs/images/dashboard-overview.jpg),
-[mean reversion](../docs/images/dashboard-mean-reversion.jpg),
-[performance](../docs/images/dashboard-performance.jpg),
-[HTML report](../docs/images/research-report.jpg).
-Captures include the actual experiment IDs, not illustrative placeholders.
+Current default outputs: momentum **986c27a8aad849958ea3**, −0.62%, 14 closed episodes, REJECT; mean_reversion **67c6d758d1a82087d6ed**, +4.76%, 15 closed episodes, CAUTION. Both remain retrospective historical simulations.
 
-The [active workflow](../.github/workflows/ci.yml) passed on all four Linux/Windows × Python 3.11/3.12 combinations. Each job completed lint, formatting, 26 tests, both offline baselines and packaging, then uploaded research artifacts. The [verified run](https://github.com/dancho133/quant-terminal/actions/runs/38436912176) checked numerical source commit 554387d65e882fd91292b57d9dd07c29682744c0. [ci-result.json](ci-result.json) records the actual run and job results. Later documentation commits do not change that numerical source; inspect [GitHub Actions](https://github.com/dancho133/quant-terminal/actions) for the latest head's result.
+## Revision and CI provenance
 
-Dockerfile is provided, but Docker was unavailable locally and no container build/run is claimed.
-No live broker connection, real-money order, LLM/API invocation, or production deployment was performed.
+At **e7cf3bd**, 26 tests passed and the IDs were bbc87bc1d4ee46e327d3 / 7838b1e5f5eb082c7e1b. Its final [CI run](https://github.com/dancho133/quant-terminal/actions/runs/38438374392) passed all four Linux/Windows × Python 3.11/3.12 jobs. That historical result does not validate this changed source. [ci-result.json](ci-result.json) now records the current source run separately from that baseline.
+
+The updated numerical source is commit **77dbb5e0b9caf355fb31f052f4ddf9fb0202a230**. Its [verified CI run](https://github.com/dancho133/quant-terminal/actions/runs/38525185413) completed successfully in all four jobs. The fresh clone and installed wheel both reproduced that engine. [verification.json](verification.json) captures a clean checkout with 14 checks including comparison to current examples, no failures, and the exact source SHA. Its absolute paths refer to the capture machine; rerun the command to obtain local paths. The numerical engine remains the same; the exported configuration checker was subsequently tightened to reject boolean and noninteger configuration fields. The current local suite contains 48 tests; the recorded source CI run above contains 47. Current-head CI is authoritative for the tightened checker. Use the generated verification.json for checked_commit, worktree_dirty, engine/data hashes, commands, checks, failures and artifact_paths. A dirty checkout's SHA is its base commit; the source fingerprint identifies the executed files. An installed wheel's source SHA is explicitly declared, not independently inferred.
+
+## Scope and unavailable checks
+
+Docker CLI is unavailable locally; no container build/run is claimed. The HTML/JSON/CSV exports on disk are verified. The browser click on HTML download was exercised, but this automation did not deliver a download event or confirmed saved path; end-to-end browser download persistence is **unverified**. No completed video recording is claimed; DEMO.md supplies the 55-second script.
+
+No live broker connection, real-money order, working LLM agent or production deployment was performed. Shared indicator/strategy and stress-simulator logic is disclosed in REVIEWER_GUIDE.md; successful checks do not prove the entire financial model correct.
+
+[Full current test log](test-output.txt) · [Artifact/capture evidence](evidence.json) · [Internal software review](../docs/code_review.md).

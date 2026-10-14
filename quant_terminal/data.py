@@ -96,7 +96,7 @@ class CSVProvider:
         if provenance.get("csv_sha256", csv_hash) != csv_hash:
             raise ValueError("CSV checksum does not match its provenance manifest.")
         try:
-            reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")))
+            reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")), strict=True)
             if reader.fieldnames != ["timestamp", "open", "high", "low", "close", "volume"]:
                 raise ValueError("CSV columns must be timestamp,open,high,low,close,volume.")
             parsed = []

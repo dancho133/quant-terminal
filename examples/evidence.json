@@ -1,116 +1,119 @@
-[
-  {
-    "engine_sha256": "c66a0f10e8324bc3910a1adb42ec0628707966ec3ed27518fde30c9c1f05fdbc",
-    "experiment_id": "bbc87bc1d4ee46e327d3",
-    "files": {
-      "drawdown.svg": {
-        "bytes": 33536,
-        "sha256": "97f16e0c0d9c08eedfce53298b8c39e50671b467c9ecf64847029123cc6e4c6d"
-      },
-      "equity.svg": {
-        "bytes": 30469,
-        "sha256": "c15b544244ccd5a63c3180aefa2ac7399a20962606c62ca63039918d51c521fe"
-      },
-      "experiment.json": {
-        "bytes": 806687,
-        "sha256": "49f77dc77c900f3f3c01f5c3ab328f4c49ada55d3a7d45dd143508311eafdad1"
-      },
-      "exposure.svg": {
-        "bytes": 12561,
-        "sha256": "0ea052b598c6f2e7b917d9e36c334c5e2ede226a816e7854edfea78fc24087ae"
-      },
-      "report.html": {
-        "bytes": 199494,
-        "sha256": "50a40a8495408349e407d618d80ff54760e60f644e40e1b655a8e4132a710404"
-      },
-      "report.md": {
-        "bytes": 5519,
-        "sha256": "5466128dc6b220fd49312e26e171ce6964b703b9e8fbda4ab52d9b4a6d2550d3"
-      },
-      "trades.csv": {
-        "bytes": 26850,
-        "sha256": "269ceb3cb3ce88b5ac6c22cb2125e8809bddef0171b6373ca7cf3e34600be476"
-      }
+{
+  "browser": "Actual running Streamlit UI and generated report; browser-download persistence unverified",
+  "checked_source_commit": "77dbb5e0b9caf355fb31f052f4ddf9fb0202a230",
+  "ci_jobs_passed": 4,
+  "ci_run": "https://github.com/dancho133/quant-terminal/actions/runs/38525185413",
+  "code_review": "AI-assisted internal software review; no external certification",
+  "dataset_hash": "c2d7fb5f1c417ebe63a471b88ae2df27c80e0cb7de95e4361ea5ae0f98628c91",
+  "date": "2026-10-14",
+  "engine_hash": "cad560d776cb4be902fd983a28edf6a27815dd46e94cc173edb436e7bb09cce8",
+  "exported_type_contract_regression": true,
+  "files": {
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-mean-reversion.jpg": {
+      "bytes": 39496,
+      "sha256": "0ad5af705a10f50b8ab82937552c066709f73e7746c910ec484ccdb405388fbc"
     },
-    "metrics": {
-      "annualized_volatility": 0.04908808371808001,
-      "asset_concentration": 1.0,
-      "average_exposure": 0.07466443133005204,
-      "benchmark_return": -0.07340553270062156,
-      "ending_equity": 9938.165900705211,
-      "evaluation_bars": 365,
-      "fees": 72.042853256618,
-      "fill_count": 123,
-      "max_drawdown": 0.03563225424623406,
-      "max_exposure": 0.2618506105315262,
-      "number_of_trades": 14,
-      "same_risk_benchmark_return": -0.004798478181275989,
-      "sharpe_like": -0.10187297085183436,
-      "slippage_cost": 36.02143818585239,
-      "total_return": -0.006183409929478856,
-      "transaction_costs": 108.06429144247039,
-      "turnover": 7.204285325661799,
-      "win_rate": 0.42857142857142855
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-overview.jpg": {
+      "bytes": 36290,
+      "sha256": "8f1647d2f4dce87a52b7420357536e34cb8b53e70a84437571af0e3f9d53958c"
     },
-    "strategy": "momentum",
-    "verdict": "REJECT",
-    "wheel_numerical_artifact_equal": true
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-performance.jpg": {
+      "bytes": 37201,
+      "sha256": "5576cf79dc16446190285682c531c9d24e478de7da4fed8586bbac4c766f158c"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-research.jpg": {
+      "bytes": 41443,
+      "sha256": "c39454eafee1a0cbf0f26b813a9f5698e304d0469f9e0c32adfa130592493554"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-risk.jpg": {
+      "bytes": 37199,
+      "sha256": "f5b819d4dbb4eda50346386ff8e8bac58eda75dac44c6b62b10b083f9d4205c5"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/research-report.jpg": {
+      "bytes": 33536,
+      "sha256": "6d205dbeaa3491eb7897503b7fcc63a67c078f2495ee800404a1fa8f11fc6a40"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/67c6d758d1a82087d6ed/drawdown.svg": {
+      "bytes": 34605,
+      "sha256": "ed9a7a44b02d91f129b2302343e09388457bf696dcfd9a87700e8d39fa2c87c6"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/67c6d758d1a82087d6ed/equity.svg": {
+      "bytes": 31546,
+      "sha256": "d3c9ae75255d290b727a6b623b810fe49d1bee2d9873b02754f5b5b55f946903"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/67c6d758d1a82087d6ed/experiment.json": {
+      "bytes": 859560,
+      "sha256": "77248798fa16e18f1879b7675ed457f0da0d0aee8debcdf5ab5a20f7711fd20d"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/67c6d758d1a82087d6ed/exposure.svg": {
+      "bytes": 13604,
+      "sha256": "b5d2eb8b8c4a5d8bd95e1bdbc49b56aabf9f8e71921a478e2e5b99d91d895d8d"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/67c6d758d1a82087d6ed/report.html": {
+      "bytes": 241852,
+      "sha256": "104ae716fdbcac348451fd1d154af78ee676ebf86a2cc443759eb774f187d823"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/67c6d758d1a82087d6ed/report.md": {
+      "bytes": 5201,
+      "sha256": "712c83fca03b33f99c7941f3c747de31a8ee555d208d14ffe3f2450ce3adde36"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/67c6d758d1a82087d6ed/trades.csv": {
+      "bytes": 36089,
+      "sha256": "42b165c7fcea15189503491af356ac7a517ab52f1a8bb91d12ecd1fe6af7bde5"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/986c27a8aad849958ea3/drawdown.svg": {
+      "bytes": 33536,
+      "sha256": "bf46bae2dad8d9be34019088466f22243227e0cb59a4bd5cb62656dd2b308655"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/986c27a8aad849958ea3/equity.svg": {
+      "bytes": 30469,
+      "sha256": "31f4e6c45fd90ea8fb2f801d77f5b3087798905186f6d23eedeefc12460a51ff"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/986c27a8aad849958ea3/experiment.json": {
+      "bytes": 806979,
+      "sha256": "1f0bc10ba7e47044e52aef4e59cdae50d5156579c49e3a8f4a2de7bf5489559a"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/986c27a8aad849958ea3/exposure.svg": {
+      "bytes": 12561,
+      "sha256": "2b4d6941ba8c74fcf7d62e1ee6de6c13a1a9014138d96a2ff13db5694813621f"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/986c27a8aad849958ea3/report.html": {
+      "bytes": 199516,
+      "sha256": "826e1f1e6d199f828f339c0377dca604c3a915b31723a2a9b7267855f72924bd"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/986c27a8aad849958ea3/report.md": {
+      "bytes": 5541,
+      "sha256": "3754b2b1e594b7e82e393d75794d1b53882e6c3a42e879133669bb26c17220b8"
+    },
+    "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/examples/986c27a8aad849958ea3/trades.csv": {
+      "bytes": 26849,
+      "sha256": "ecc04322ced8fa300a6bd3b1919846eda65f3fab91033b1fe174d6cb37ae5eba"
+    },
+    "examples/ci-result.json": {
+      "bytes": 16686,
+      "sha256": "c81180592e13e8d14f0b29e135d02e459389f2e52ea6e59ba5357c5003bc868b"
+    },
+    "examples/test-output.txt": {
+      "bytes": 8668,
+      "sha256": "591d377392397e30f7ff7f486879fcee188eed191934a0c71f3baa69f3a7f879"
+    },
+    "examples/verification.json": {
+      "bytes": 3739,
+      "sha256": "e195828743ce64f0de6a26aa1ad2c5fef022c23e797b3270a1fdb0553569a1f3"
+    }
   },
-  {
-    "engine_sha256": "c66a0f10e8324bc3910a1adb42ec0628707966ec3ed27518fde30c9c1f05fdbc",
-    "experiment_id": "7838b1e5f5eb082c7e1b",
-    "files": {
-      "drawdown.svg": {
-        "bytes": 34605,
-        "sha256": "c133c3086a4b57495551169983ac21753e87ec38f3ab0757b3b6d15823c3bfd6"
-      },
-      "equity.svg": {
-        "bytes": 31546,
-        "sha256": "d7b3e536f9308d7ba549bdf8c82feebb2edfb16b088fc87d103897d1c5d89953"
-      },
-      "experiment.json": {
-        "bytes": 859270,
-        "sha256": "5b002120a6065e4dcf8da725d08948e53c77844274b33b4e0d5ad56adf7f2343"
-      },
-      "exposure.svg": {
-        "bytes": 13604,
-        "sha256": "128ff7594eaecd49f4801cd1fca67c2100d39b3916bd3cf53c836a2277207ff0"
-      },
-      "report.html": {
-        "bytes": 241829,
-        "sha256": "b68d0452f8c74c9805fd8249ffa54b697ed27d5f363a3a5317e9e3cfa340c3ab"
-      },
-      "report.md": {
-        "bytes": 5179,
-        "sha256": "a65705b3ef2e84d0407b6d0d3a777abf88374b5a92a93cd6526da668e3c20133"
-      },
-      "trades.csv": {
-        "bytes": 36090,
-        "sha256": "5d0e15808f8ff4a5f0431154607f0232391b3158e235fe5ddaeef32594440570"
-      }
-    },
-    "metrics": {
-      "annualized_volatility": 0.07621675315835272,
-      "asset_concentration": 1.0,
-      "average_exposure": 0.10422387098328068,
-      "benchmark_return": -0.07340553270062156,
-      "ending_equity": 10475.760619557159,
-      "evaluation_bars": 365,
-      "fees": 83.73247931683244,
-      "fill_count": 167,
-      "max_drawdown": 0.05632948299621632,
-      "max_exposure": 0.26746022752646076,
-      "number_of_trades": 15,
-      "same_risk_benchmark_return": -0.004798478181275989,
-      "sharpe_like": 0.6477996400108276,
-      "slippage_cost": 41.86638999828297,
-      "total_return": 0.047576061955715954,
-      "transaction_costs": 125.59886931511541,
-      "turnover": 8.373247931683244,
-      "win_rate": 0.8666666666666667
-    },
-    "strategy": "mean_reversion",
-    "verdict": "CAUTION",
-    "wheel_numerical_artifact_equal": true
-  }
-]
+  "fresh_clone_tests": 47,
+  "fresh_clone_verification_checks": 14,
+  "local_unittest_count": 48,
+  "numeric_comparison": {
+    "absolute_tolerance": 1e-10,
+    "figures": "structure only; never byte equality",
+    "ignored_json_paths": [
+      "reproducibility.python"
+    ],
+    "relative_tolerance": 1e-10
+  },
+  "secret_pattern_findings": 0,
+  "source_verification_checks": 12,
+  "wheel_comparison_checks": 14
+}

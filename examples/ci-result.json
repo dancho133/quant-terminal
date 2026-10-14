@@ -1,1 +1,503 @@
-{"conclusion":"success","headSha":"554387d65e882fd91292b57d9dd07c29682744c0","jobs":[{"conclusion":"success","databaseId":115433179991,"name":"verify (windows-latest, 3.12)"},{"conclusion":"success","databaseId":115433180389,"name":"verify (ubuntu-latest, 3.12)"},{"conclusion":"success","databaseId":115433180560,"name":"verify (ubuntu-latest, 3.11)"},{"conclusion":"success","databaseId":115433180607,"name":"verify (windows-latest, 3.11)"}],"url":"https://github.com/dancho133/quant-terminal/actions/runs/38436912176"}
+{
+  "conclusion": "success",
+  "createdAt": "2026-10-14T06:56:25Z",
+  "databaseId": 38525185413,
+  "headSha": "77dbb5e0b9caf355fb31f052f4ddf9fb0202a230",
+  "jobs": [
+    {
+      "completedAt": "2026-10-14T06:58:33Z",
+      "conclusion": "success",
+      "databaseId": 115723769283,
+      "name": "verify (windows-latest, 3.11)",
+      "startedAt": "2026-10-14T06:56:28Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-14T06:56:30Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-14T06:56:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:34Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-10-14T06:56:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:36Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@v10.3.0",
+          "number": 3,
+          "startedAt": "2026-10-14T06:56:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:41Z",
+          "conclusion": "success",
+          "name": "Run uv sync --locked --group dev",
+          "number": 4,
+          "startedAt": "2026-10-14T06:56:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:42Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff format --check .",
+          "number": 5,
+          "startedAt": "2026-10-14T06:56:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:42Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff check .",
+          "number": 6,
+          "startedAt": "2026-10-14T06:56:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:08Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked python -m unittest discover -s tests -v",
+          "number": 7,
+          "startedAt": "2026-10-14T06:56:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:12Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-demo --no-ui --output artifacts/ci",
+          "number": 8,
+          "startedAt": "2026-10-14T06:58:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:21Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-verify --output artifacts/verified",
+          "number": 9,
+          "startedAt": "2026-10-14T06:58:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:24Z",
+          "conclusion": "success",
+          "name": "Run uv build",
+          "number": 10,
+          "startedAt": "2026-10-14T06:58:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:25Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.2",
+          "number": 11,
+          "startedAt": "2026-10-14T06:58:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:30Z",
+          "conclusion": "success",
+          "name": "Post Run astral-sh/setup-uv@v10.3.0",
+          "number": 21,
+          "startedAt": "2026-10-14T06:58:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:32Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 22,
+          "startedAt": "2026-10-14T06:58:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:32Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-10-14T06:58:32Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/dancho133/quant-terminal/actions/runs/38525185413/job/115723769283"
+    },
+    {
+      "completedAt": "2026-10-14T06:58:06Z",
+      "conclusion": "success",
+      "databaseId": 115723769531,
+      "name": "verify (ubuntu-latest, 3.11)",
+      "startedAt": "2026-10-14T06:56:28Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-14T06:56:31Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-14T06:56:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:32Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-10-14T06:56:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:34Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@v10.3.0",
+          "number": 3,
+          "startedAt": "2026-10-14T06:56:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:37Z",
+          "conclusion": "success",
+          "name": "Run uv sync --locked --group dev",
+          "number": 4,
+          "startedAt": "2026-10-14T06:56:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:37Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff format --check .",
+          "number": 5,
+          "startedAt": "2026-10-14T06:56:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:37Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff check .",
+          "number": 6,
+          "startedAt": "2026-10-14T06:56:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:46Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked python -m unittest discover -s tests -v",
+          "number": 7,
+          "startedAt": "2026-10-14T06:56:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:49Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-demo --no-ui --output artifacts/ci",
+          "number": 8,
+          "startedAt": "2026-10-14T06:57:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:56Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-verify --output artifacts/verified",
+          "number": 9,
+          "startedAt": "2026-10-14T06:57:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:57Z",
+          "conclusion": "success",
+          "name": "Run uv build",
+          "number": 10,
+          "startedAt": "2026-10-14T06:57:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:59Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.2",
+          "number": 11,
+          "startedAt": "2026-10-14T06:57:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:03Z",
+          "conclusion": "success",
+          "name": "Post Run astral-sh/setup-uv@v10.3.0",
+          "number": 21,
+          "startedAt": "2026-10-14T06:57:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:04Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 22,
+          "startedAt": "2026-10-14T06:58:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:04Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-10-14T06:58:04Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/dancho133/quant-terminal/actions/runs/38525185413/job/115723769531"
+    },
+    {
+      "completedAt": "2026-10-14T06:58:00Z",
+      "conclusion": "success",
+      "databaseId": 115723769556,
+      "name": "verify (ubuntu-latest, 3.12)",
+      "startedAt": "2026-10-14T06:56:28Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-14T06:56:30Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-14T06:56:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:31Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-10-14T06:56:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:32Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@v10.3.0",
+          "number": 3,
+          "startedAt": "2026-10-14T06:56:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:34Z",
+          "conclusion": "success",
+          "name": "Run uv sync --locked --group dev",
+          "number": 4,
+          "startedAt": "2026-10-14T06:56:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:34Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff format --check .",
+          "number": 5,
+          "startedAt": "2026-10-14T06:56:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:34Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff check .",
+          "number": 6,
+          "startedAt": "2026-10-14T06:56:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:42Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked python -m unittest discover -s tests -v",
+          "number": 7,
+          "startedAt": "2026-10-14T06:56:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:45Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-demo --no-ui --output artifacts/ci",
+          "number": 8,
+          "startedAt": "2026-10-14T06:57:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:52Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-verify --output artifacts/verified",
+          "number": 9,
+          "startedAt": "2026-10-14T06:57:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:53Z",
+          "conclusion": "success",
+          "name": "Run uv build",
+          "number": 10,
+          "startedAt": "2026-10-14T06:57:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:55Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.2",
+          "number": 11,
+          "startedAt": "2026-10-14T06:57:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:58Z",
+          "conclusion": "success",
+          "name": "Post Run astral-sh/setup-uv@v10.3.0",
+          "number": 21,
+          "startedAt": "2026-10-14T06:57:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:58Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 22,
+          "startedAt": "2026-10-14T06:57:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:57:58Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-10-14T06:57:58Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/dancho133/quant-terminal/actions/runs/38525185413/job/115723769556"
+    },
+    {
+      "completedAt": "2026-10-14T06:58:40Z",
+      "conclusion": "success",
+      "databaseId": 115723769717,
+      "name": "verify (windows-latest, 3.12)",
+      "startedAt": "2026-10-14T06:56:28Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-14T06:56:30Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-14T06:56:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:34Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-10-14T06:56:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:36Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@v10.3.0",
+          "number": 3,
+          "startedAt": "2026-10-14T06:56:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:40Z",
+          "conclusion": "success",
+          "name": "Run uv sync --locked --group dev",
+          "number": 4,
+          "startedAt": "2026-10-14T06:56:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:41Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff format --check .",
+          "number": 5,
+          "startedAt": "2026-10-14T06:56:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:56:41Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked ruff check .",
+          "number": 6,
+          "startedAt": "2026-10-14T06:56:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:12Z",
+          "conclusion": "success",
+          "name": "Run uv run --locked python -m unittest discover -s tests -v",
+          "number": 7,
+          "startedAt": "2026-10-14T06:56:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:16Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-demo --no-ui --output artifacts/ci",
+          "number": 8,
+          "startedAt": "2026-10-14T06:58:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:25Z",
+          "conclusion": "success",
+          "name": "Run uv run --offline --locked quant-terminal-verify --output artifacts/verified",
+          "number": 9,
+          "startedAt": "2026-10-14T06:58:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:28Z",
+          "conclusion": "success",
+          "name": "Run uv build",
+          "number": 10,
+          "startedAt": "2026-10-14T06:58:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:29Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.2",
+          "number": 11,
+          "startedAt": "2026-10-14T06:58:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:36Z",
+          "conclusion": "success",
+          "name": "Post Run astral-sh/setup-uv@v10.3.0",
+          "number": 21,
+          "startedAt": "2026-10-14T06:58:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:38Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 22,
+          "startedAt": "2026-10-14T06:58:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-14T06:58:38Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-10-14T06:58:38Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/dancho133/quant-terminal/actions/runs/38525185413/job/115723769717"
+    }
+  ],
+  "startedAt": "2026-10-14T06:56:25Z",
+  "status": "completed",
+  "url": "https://github.com/dancho133/quant-terminal/actions/runs/38525185413"
+}

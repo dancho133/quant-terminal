@@ -1,8 +1,8 @@
 # Quant Terminal — Research report
 
-Agentic Market Research & Risk Sandbox
+Historical Market Research & Risk Sandbox
 
-**Experiment:** 7838b1e5f5eb082c7e1b  
+**Experiment:** 67c6d758d1a82087d6ed  
 **Strategy:** mean_reversion · **Asset:** BTCUSDT  
 **Evaluation:** 2025-01-01 — 2025-12-31  
 **Critic:** CAUTION
@@ -113,8 +113,8 @@ Single-asset and baseline-selection bias remain. No statistical significance cla
 
 **Evidence is inconclusive; further falsification is required.**
 
-AI proposes. Evidence tests. Risk constrains. Critic challenges.
+Baselines propose. Historical evidence tests. Risk constrains. Rules challenge.
 
-This repository is a research/paper-trading prototype and is not financial advice or a claim of profitable trading performance.
+This is a historical research simulator, not a broker paper account, financial advice or a claim of profitable trading performance.
 
 Historical dataset and derived example outputs: Binance Vision, CC BY-NC-SA 4.0 and supplemental dataset terms. Code: MIT. No affiliation is implied.

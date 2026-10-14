@@ -46,6 +46,7 @@ def calculate_metrics(
         "average_exposure": fmean(r["exposure"] for r in ledger),
         "ending_equity": equities[-1],
         "evaluation_bars": len(ledger),
+        "periods_per_year": periods_per_year,
     }
 
 
@@ -53,6 +54,11 @@ def simulate(dataset: Dataset, strategy: Strategy, config: ExperimentConfig) -> 
     validate_bars(dataset.bars)
     if dataset.asset != config.asset:
         raise ValueError("Dataset asset does not match experiment configuration.")
+    if (
+        config.evaluation_start < dataset.bars[0].timestamp.date().isoformat()
+        or config.evaluation_end > dataset.bars[-1].timestamp.date().isoformat()
+    ):
+        raise ValueError("Evaluation dates must lie within the dataset; windows are never clipped.")
     indices = [
         i
         for i, b in enumerate(dataset.bars)
@@ -80,7 +86,12 @@ def simulate(dataset: Dataset, strategy: Strategy, config: ExperimentConfig) -> 
             target = 0.0 if gate.halted else pending["allowed_target"]
             if target is not None:
                 quantity = gate.quantity_for_target(target, cash, units, bar.open)
-                if abs(quantity) > 1e-10 and gate.approve_order(
+                # Ignore only immaterial rebalances; every nonzero liquidation must execute.
+                opening_equity = cash + units * bar.open
+                trade_required = quantity != 0 and (
+                    target == 0 or abs(quantity) * bar.open > 1e-12 * opening_equity
+                )
+                if trade_required and gate.approve_order(
                     quantity, cash, units, bar.open, timestamp
                 ):
                     old_units = units
@@ -90,7 +101,7 @@ def simulate(dataset: Dataset, strategy: Strategy, config: ExperimentConfig) -> 
                     slip = absolute * abs(fill_price - bar.open)
                     realized = None
                     if quantity > 0:
-                        if old_units <= 1e-10:
+                        if old_units == 0:
                             episode_start, episode_pnl = timestamp, 0.0
                         unit_basis = (old_units * unit_basis + quantity * fill_price + fee) / (
                             old_units + quantity
@@ -100,7 +111,7 @@ def simulate(dataset: Dataset, strategy: Strategy, config: ExperimentConfig) -> 
                         episode_pnl += realized
                     cash -= quantity * fill_price + fee
                     units += quantity
-                    if abs(units) < 1e-10:
+                    if units == 0:
                         units = 0.0
                         episodes.append(
                             {
@@ -110,9 +121,9 @@ def simulate(dataset: Dataset, strategy: Strategy, config: ExperimentConfig) -> 
                             }
                         )
                         unit_basis, episode_start, episode_pnl = 0.0, None, 0.0
-                    if abs(cash) < 1e-9:
+                    if -1e-12 * opening_equity <= cash < 0:
                         cash = 0.0
-                    if cash < -1e-8 or units < 0:
+                    if cash < 0 or units < 0:
                         raise ArithmeticError(
                             "Portfolio accounting violated no-borrowing/no-short invariants."
                         )
@@ -148,7 +159,7 @@ def simulate(dataset: Dataset, strategy: Strategy, config: ExperimentConfig) -> 
                 "exposure": exposure,
                 "benchmark_equity": config.initial_capital
                 if local == 0
-                else config.initial_capital * bar.close / benchmark_entry,
+                else config.initial_capital * (bar.close / benchmark_entry),
             }
         )
         requested = strategy.target(features[index], exposure)

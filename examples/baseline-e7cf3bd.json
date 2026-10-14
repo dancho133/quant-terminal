@@ -1,0 +1,102 @@
+{
+  "checked_commit": "e7cf3bda0da59a59fa243ad74ee3ad86f3a098c4",
+  "purpose": "Historical baseline metrics; not verification of the updated engine",
+  "strategies": {
+    "mean_reversion": {
+      "config": {
+        "asset": "BTCUSDT",
+        "costs": {
+          "fee_bps": 10.0,
+          "slippage_bps": 5.0
+        },
+        "evaluation_end": "2025-12-31",
+        "evaluation_start": "2025-01-01",
+        "initial_capital": 10000.0,
+        "params": {
+          "entry_z": -1.0,
+          "exit_z": 0.0,
+          "lookback": 20
+        },
+        "periods_per_year": 365,
+        "risk": {
+          "max_drawdown": 0.2,
+          "max_exposure": 0.5,
+          "max_position": 0.25
+        },
+        "strategy": "mean_reversion"
+      },
+      "dataset_hash": "c2d7fb5f1c417ebe63a471b88ae2df27c80e0cb7de95e4361ea5ae0f98628c91",
+      "engine_hash": "c66a0f10e8324bc3910a1adb42ec0628707966ec3ed27518fde30c9c1f05fdbc",
+      "experiment_id": "7838b1e5f5eb082c7e1b",
+      "metrics": {
+        "annualized_volatility": 0.07621675315835272,
+        "asset_concentration": 1.0,
+        "average_exposure": 0.10422387098328068,
+        "benchmark_return": -0.07340553270062156,
+        "ending_equity": 10475.760619557159,
+        "evaluation_bars": 365,
+        "fees": 83.73247931683244,
+        "fill_count": 167,
+        "max_drawdown": 0.05632948299621632,
+        "max_exposure": 0.26746022752646076,
+        "number_of_trades": 15,
+        "same_risk_benchmark_return": -0.004798478181275989,
+        "sharpe_like": 0.6477996400108276,
+        "slippage_cost": 41.86638999828297,
+        "total_return": 0.047576061955715954,
+        "transaction_costs": 125.59886931511541,
+        "turnover": 8.373247931683244,
+        "win_rate": 0.8666666666666667
+      },
+      "verdict": "CAUTION"
+    },
+    "momentum": {
+      "config": {
+        "asset": "BTCUSDT",
+        "costs": {
+          "fee_bps": 10.0,
+          "slippage_bps": 5.0
+        },
+        "evaluation_end": "2025-12-31",
+        "evaluation_start": "2025-01-01",
+        "initial_capital": 10000.0,
+        "params": {
+          "fast": 20,
+          "lookback": 20,
+          "slow": 50
+        },
+        "periods_per_year": 365,
+        "risk": {
+          "max_drawdown": 0.2,
+          "max_exposure": 0.5,
+          "max_position": 0.25
+        },
+        "strategy": "momentum"
+      },
+      "dataset_hash": "c2d7fb5f1c417ebe63a471b88ae2df27c80e0cb7de95e4361ea5ae0f98628c91",
+      "engine_hash": "c66a0f10e8324bc3910a1adb42ec0628707966ec3ed27518fde30c9c1f05fdbc",
+      "experiment_id": "bbc87bc1d4ee46e327d3",
+      "metrics": {
+        "annualized_volatility": 0.04908808371808001,
+        "asset_concentration": 1.0,
+        "average_exposure": 0.07466443133005204,
+        "benchmark_return": -0.07340553270062156,
+        "ending_equity": 9938.165900705211,
+        "evaluation_bars": 365,
+        "fees": 72.042853256618,
+        "fill_count": 123,
+        "max_drawdown": 0.03563225424623406,
+        "max_exposure": 0.2618506105315262,
+        "number_of_trades": 14,
+        "same_risk_benchmark_return": -0.004798478181275989,
+        "sharpe_like": -0.10187297085183436,
+        "slippage_cost": 36.02143818585239,
+        "total_return": -0.006183409929478856,
+        "transaction_costs": 108.06429144247039,
+        "turnover": 7.204285325661799,
+        "win_rate": 0.42857142857142855
+      },
+      "verdict": "REJECT"
+    }
+  }
+}

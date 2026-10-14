@@ -12,6 +12,7 @@ dependencies = ["streamlit>=1.65,<2", "matplotlib>=3.11,<4"]
 [project.scripts]
 quant-terminal = "quant_terminal.run:main"
 quant-terminal-demo = "quant_terminal.demo:main"
+quant-terminal-verify = "quant_terminal.verify:main"
 
 [dependency-groups]
 dev = ["ruff>=0.12,<1"]

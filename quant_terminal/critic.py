@@ -76,7 +76,9 @@ def review(result: dict[str, Any], robustness: dict[str, Any]) -> dict[str, Any]
         0,
         "The declared improvement hypothesis failed against the identical-risk constant-long comparator.",
     )
-    annual_turnover = metrics["turnover"] * 365 / metrics["evaluation_bars"]
+    annual_turnover = (
+        metrics["turnover"] * metrics.get("periods_per_year", 365) / metrics["evaluation_bars"]
+    )
     check(
         "EXCESSIVE_TURNOVER",
         "CAUTION",

@@ -1,6 +1,8 @@
-.PHONY: demo test lint format
+.PHONY: demo verify test lint format
 demo:
 	uv run --locked quant-terminal-demo
+verify:
+	uv run --offline --locked quant-terminal-verify
 test:
 	uv run --locked python -m unittest discover -s tests -v
 lint:

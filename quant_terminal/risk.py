@@ -6,12 +6,12 @@ import math
 from dataclasses import asdict
 from typing import Any
 
-from quant_terminal.models import CostModel, RiskConfig
+from quant_terminal.models import CostModel, RiskConfig, finite_number
 
 
 class RiskManager:
     def __init__(self, limits: RiskConfig, costs: CostModel, initial_capital: float) -> None:
-        if not math.isfinite(initial_capital) or initial_capital <= 0:
+        if not finite_number(initial_capital) or initial_capital <= 0:
             raise ValueError("Risk manager requires positive initial capital.")
         self.limits = limits
         self.costs = costs
@@ -52,7 +52,8 @@ class RiskManager:
                 self.limits.exposure_cap,
                 reason="Close mark exceeded the cap; adjust next open.",
             )
-        if drawdown >= self.limits.max_drawdown and not self.halted:
+        # Compare monetary values: 1 - 800/1000 rounds below the exact 20% boundary.
+        if equity <= self.peak * (1 - self.limits.max_drawdown) and not self.halted:
             self.halted = True
             self.record(
                 timestamp,
@@ -65,7 +66,7 @@ class RiskManager:
         return drawdown
 
     def constrain_target(self, target: float, timestamp: str) -> float | None:
-        if not math.isfinite(target) or not 0 <= target <= 1:
+        if not finite_number(target) or not 0 <= target <= 1:
             self.record(timestamp, "INVALID_TARGET", "REJECT", target, "[0, 1]")
             return None
         if self.halted:
@@ -81,6 +82,8 @@ class RiskManager:
 
     def quantity_for_target(self, weight: float, cash: float, units: float, price: float) -> float:
         """Solve weight against post-cost equity marked at the un-slipped open."""
+        if weight == 0:
+            return -units
         equity = cash + units * price
         difference = weight * equity - units * price
         if difference >= 0:
@@ -97,11 +100,11 @@ class RiskManager:
         code = None
         observed: Any = quantity
         limit: Any = None
-        if any(not math.isfinite(v) for v in inputs) or price <= 0 or cash < -1e-8 or units < 0:
+        if any(not finite_number(v) for v in inputs) or price <= 0 or cash < 0 or units < 0:
             code = "INVALID_ORDER"
         elif quantity > 0 and self.halted:
             code, limit = "HALTED_ENTRY", 0
-        elif quantity < -units - 1e-10:
+        elif quantity < -units:
             code, limit = "SHORT_ORDER", units
         else:
             fill = self.costs.fill_price(price, quantity)
@@ -110,7 +113,8 @@ class RiskManager:
             next_units = units + quantity
             equity = next_cash + next_units * price
             exposure = next_units * price / equity if equity > 0 else math.inf
-            if next_cash < -1e-8 or equity <= 0:
+            cash_tolerance = 1e-12 * (cash + units * price)
+            if next_cash < -cash_tolerance or equity <= 0:
                 code, observed, limit = "INSUFFICIENT_CASH", next_cash, 0
             elif quantity > 0 and exposure > self.limits.exposure_cap + 1e-9:
                 code, observed, limit = "EXPOSURE_LIMIT", exposure, self.limits.exposure_cap
