@@ -56,6 +56,81 @@ def config(days=4, **kwargs):
 
 
 class BacktestRiskTests(unittest.TestCase):
+    def test_drawdown_liquidation_is_never_skipped_as_immaterial_after_a_gap(self):
+        from quant_terminal.backtest import simulate
+        from quant_terminal.data import dataset_from_bars
+        from quant_terminal.models import Bar, RiskConfig
+
+        data = dataset_from_bars(
+            "BTCUSDT",
+            tuple(
+                Bar(
+                    datetime(2024, 1, 1, tzinfo=UTC) + timedelta(days=i),
+                    o,
+                    max(o, c),
+                    min(o, c),
+                    c,
+                    100,
+                )
+                for i, (o, c) in enumerate(((100, 100), (100, 50), (1e-11, 100)))
+            ),
+        )
+        result = simulate(data, ScriptedStrategy([0.4]), config(3, risk=RiskConfig(0.25, 0.5, 0.1)))
+        self.assertTrue(result["risk"]["halted"])
+        self.assertEqual([f["side"] for f in result["fills"]], ["BUY", "SELL"])
+        self.assertEqual(result["fills"][1]["price"], 1e-11)
+        self.assertEqual(result["ending_position"]["units"], 0)
+        self.assertAlmostEqual(result["metrics"]["ending_equity"], 750)
+
+    def test_zero_target_sells_exact_holdings_without_a_rounding_residue(self):
+        from quant_terminal.models import CostModel, RiskConfig
+        from quant_terminal.risk import RiskManager
+
+        gate = RiskManager(RiskConfig(), CostModel(), 10000)
+        units = 0.021049669111796436
+        quantity = gate.quantity_for_target(0, 7500, units, 112774.49)
+        self.assertEqual(quantity, -units)
+        self.assertEqual(units + quantity, 0)
+
+    def test_exact_drawdown_threshold_halts_before_a_next_day_rebound(self):
+        from quant_terminal.backtest import simulate
+        from quant_terminal.models import RiskConfig
+
+        result = simulate(
+            fixture([(100, 100), (100, 80), (80, 100)]),
+            ScriptedStrategy([1]),
+            config(3, risk=RiskConfig(1, 1, 0.2)),
+        )
+        self.assertTrue(result["risk"]["halted"])
+        self.assertEqual([f["side"] for f in result["fills"]], ["BUY", "SELL"])
+        self.assertEqual(result["fills"][1]["timestamp"], "2024-01-03T00:00:00+00:00")
+        self.assertEqual(result["fills"][1]["price"], 80)
+        self.assertEqual(result["ending_position"]["units"], 0)
+        self.assertAlmostEqual(result["metrics"]["ending_equity"], 800)
+
+    def test_fractional_accounting_is_invariant_to_capital_scale(self):
+        from quant_terminal.backtest import simulate
+        from quant_terminal.models import CostModel
+
+        data = fixture([(100000, 100000), (100000, 150000), (200000, 200000)])
+        reference = simulate(data, ScriptedStrategy([0.4, 0, 0]), config(3, costs=CostModel(10, 5)))
+        for capital in (1e-5, 1.0, 1e8):
+            with self.subTest(capital=capital):
+                actual = simulate(
+                    data,
+                    ScriptedStrategy([0.4, 0, 0]),
+                    config(3, initial_capital=capital, costs=CostModel(10, 5)),
+                )
+                self.assertEqual([f["side"] for f in actual["fills"]], ["BUY", "SELL"])
+                self.assertEqual(actual["metrics"]["number_of_trades"], 1)
+                self.assertAlmostEqual(
+                    actual["metrics"]["total_return"], reference["metrics"]["total_return"]
+                )
+                realized = sum(f["realized_pnl"] or 0 for f in actual["fills"])
+                self.assertAlmostEqual(
+                    (actual["ending_position"]["cash"] - capital) / capital, realized / capital
+                )
+
     def test_next_open_fills_reconcile_slippage_fees_and_realized_pnl(self):
         from quant_terminal.backtest import simulate
         from quant_terminal.models import CostModel
@@ -141,6 +216,31 @@ class BacktestRiskTests(unittest.TestCase):
         ):
             self.assertFalse(gate.approve_order(qty, cash, units, 100, "fixture"))
         self.assertEqual(len([e for e in gate.events if e["action"] == "REJECT"]), 4)
+
+    def test_risk_gate_rejects_nonnumeric_proposals_and_any_short_quantity(self):
+        from quant_terminal.models import CostModel, RiskConfig
+        from quant_terminal.risk import RiskManager
+
+        gate = RiskManager(RiskConfig(), CostModel(), 1000)
+        for value in ("0.4", None, True, [], float("nan")):
+            with self.subTest(value=value):
+                self.assertIsNone(gate.constrain_target(value, "fixture"))
+                self.assertFalse(gate.approve_order(value, 1000, 0, 100, "fixture"))
+        self.assertFalse(gate.approve_order(-1e-11, 1000, 0, 1e12, "fixture"))
+        self.assertEqual(gate.events[-1]["code"], "SHORT_ORDER")
+
+    def test_small_positive_position_is_not_discarded_at_high_price(self):
+        from quant_terminal.backtest import simulate
+
+        result = simulate(
+            fixture([(1e12, 1e12)] * 4),
+            ScriptedStrategy([1, 0.005, 0, 0]),
+            config(),
+        )
+        self.assertAlmostEqual(result["ledger"][2]["equity"], 1000)
+        self.assertGreater(result["ledger"][2]["units"], 0)
+        self.assertEqual(result["metrics"]["number_of_trades"], 1)
+        self.assertAlmostEqual(result["metrics"]["ending_equity"], 1000)
 
     def test_target_caps_apply_to_post_cost_equity_and_preserve_proposal(self):
         from quant_terminal.backtest import simulate

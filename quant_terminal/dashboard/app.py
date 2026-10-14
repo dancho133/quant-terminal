@@ -12,7 +12,7 @@ import streamlit as st
 
 from quant_terminal.experiment import run_experiment
 from quant_terminal.models import CostModel, ExperimentConfig, RiskConfig
-from quant_terminal.reports import DISCLAIMER, METRIC_LIMITATIONS, write_artifacts
+from quant_terminal.reports import DISCLAIMER, metric_limitations, write_artifacts
 
 st.set_page_config(page_title="Quant Terminal", page_icon=":material/science:", layout="wide")
 st.html("""<style>
@@ -166,7 +166,7 @@ exposure = pd.DataFrame(
 
 st.caption("HISTORICAL RESEARCH / SIMULATED EXECUTION")
 st.title("Quant Terminal")
-st.markdown("Agentic Market Research & Risk Sandbox")
+st.markdown("Historical Market Research & Risk Sandbox")
 st.caption(
     f"{cfg['strategy'].replace('_', ' ').upper()} · {cfg['asset']} · DAILY UTC · "
     f"{data['evaluation_start'][:10]} → {data['evaluation_end'][:10]} · RUN {artifact['experiment_id']}"
@@ -213,7 +213,7 @@ with overview:
         st.caption(
             f"Initial capital: {cfg['initial_capital']:,.2f} USDT · fees {cfg['costs']['fee_bps']:g} bps · slippage {cfg['costs']['slippage_bps']:g} bps"
         )
-    st.caption("AI proposes. Evidence tests. Risk constrains. Critic challenges.")
+    st.caption("Baselines propose. Historical evidence tests. Risk constrains. Rules challenge.")
     st.info(
         "Deterministic research pipeline. Agent interfaces are available for future integration; no LLM agents or live orders are connected."
     )
@@ -235,7 +235,10 @@ with performance:
     more[3].metric("Gross turnover / initial capital", f"{metrics['turnover']:.2f}×")
     st.dataframe(
         pd.DataFrame(
-            [{"Metric": name, "Limitation": text} for name, text in METRIC_LIMITATIONS.items()]
+            [
+                {"Metric": name, "Limitation": text}
+                for name, text in metric_limitations(artifact).items()
+            ]
         ),
         hide_index=True,
         width="stretch",

@@ -41,7 +41,9 @@ class BaselineStrategy:
 
 
 def make_strategy(name: str, params: dict[str, int | float] | None = None) -> BaselineStrategy:
-    supplied = params or {}
+    supplied = {} if params is None else params
+    if not isinstance(supplied, dict) or any(not isinstance(k, str) for k in supplied):
+        raise ValueError("Strategy parameters must be a JSON object with string keys.")
     defaults: dict[str, int | float]
     if name == "momentum":
         defaults = {"fast": 20, "slow": 50, "lookback": 20}

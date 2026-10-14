@@ -28,6 +28,8 @@ def build_features(
         raise ValueError("Feature windows must be integers >= 2.")
     closes = [b.close for b in bars]
     returns = [closes[i] / closes[i - 1] - 1 for i in range(1, len(closes))]
+    if any(not math.isfinite(value) for value in returns):
+        raise ValueError("Price ratios exceed the supported floating-point numerical range.")
     result = []
     # ponytail: trailing slices are O(n * window); optimize only for intraday-scale data.
     for i, bar in enumerate(bars):

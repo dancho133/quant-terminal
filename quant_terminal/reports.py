@@ -14,7 +14,7 @@ import matplotlib
 matplotlib.use("Agg")
 from matplotlib import pyplot as plt
 
-DISCLAIMER = "This repository is a research/paper-trading prototype and is not financial advice or a claim of profitable trading performance."
+DISCLAIMER = "This is a historical research simulator, not a broker paper account, financial advice or a claim of profitable trading performance."
 BINANCE_TERMS = "Historical dataset and derived example outputs: Binance Vision, CC BY-NC-SA 4.0 and supplemental dataset terms. Code: MIT. No affiliation is implied."
 METRIC_LIMITATIONS = {
     "total_return": "Marked equity change; includes unrealized holdings, excludes their eventual exit cost.",
@@ -30,6 +30,14 @@ METRIC_LIMITATIONS = {
 }
 
 
+def metric_limitations(artifact: dict[str, Any]) -> dict[str, str]:
+    periods = artifact["config"]["periods_per_year"]
+    return {
+        name: text.replace("sqrt(365)", f"sqrt({periods})")
+        for name, text in METRIC_LIMITATIONS.items()
+    }
+
+
 def _percent(value: float) -> str:
     return f"{value:+.2%}"
 
@@ -37,7 +45,7 @@ def _percent(value: float) -> str:
 def metric_display(name: str, value: Any) -> str:
     if value is None:
         return "N/A"
-    if name in ("number_of_trades", "fill_count", "evaluation_bars"):
+    if name in ("number_of_trades", "fill_count", "evaluation_bars", "periods_per_year"):
         return str(value)
     if name in (
         "total_return",
@@ -182,7 +190,7 @@ def markdown_report(artifact: dict[str, Any]) -> str:
     lines = [
         "# Quant Terminal — Research report",
         "",
-        "Agentic Market Research & Risk Sandbox",
+        "Historical Market Research & Risk Sandbox",
         "",
         f"**Experiment:** {artifact['experiment_id']}  ",
         f"**Strategy:** {strategy['name']} · **Asset:** {cfg['asset']}  ",
@@ -215,7 +223,7 @@ def markdown_report(artifact: dict[str, Any]) -> str:
         "|---|---:|---|",
         *(
             f"| {key} | {metric_display(key, metrics[key])} | {limitation} |"
-            for key, limitation in METRIC_LIMITATIONS.items()
+            for key, limitation in metric_limitations(artifact).items()
         ),
         "",
         "## Equity and risk",
@@ -271,7 +279,7 @@ def markdown_report(artifact: dict[str, Any]) -> str:
         "",
         f"**{critic['conclusion']}**",
         "",
-        "AI proposes. Evidence tests. Risk constrains. Critic challenges.",
+        "Baselines propose. Historical evidence tests. Risk constrains. Rules challenge.",
         "",
         DISCLAIMER,
         "",
@@ -306,7 +314,7 @@ def html_report(artifact: dict[str, Any], charts: dict[str, str] | None = None) 
         ["Metric", "Value", "Interpretation / limit"],
         [
             [key, metric_display(key, metrics[key]), limitation]
-            for key, limitation in METRIC_LIMITATIONS.items()
+            for key, limitation in metric_limitations(artifact).items()
         ],
     )
     checks_table = _rows_table(
@@ -374,7 +382,7 @@ th{{color:#5cbfb5}}.scroll{{overflow:auto}}svg{{width:100%;height:auto;display:b
 details{{margin:18px 0}}summary{{cursor:pointer;color:#b7d4d1}}footer{{margin-top:40px;border-top:1px solid #293846;padding-top:20px;font-size:12px;color:#8b9dad}}
 @media(max-width:700px){{.cards{{grid-template-columns:repeat(2,1fr)}}main{{padding:24px 16px}}h1{{font-size:28px}}}}
 </style></head><body><main><span class="eyebrow">RESEARCH / SIMULATED EXECUTION</span><h1>Quant Terminal</h1>
-<p>Agentic Market Research &amp; Risk Sandbox</p><p class="meta">{e(cfg["strategy"])} · {e(cfg["asset"])} · {e(data["evaluation_start"][:10])} → {e(data["evaluation_end"][:10])}<br>
+<p>Historical Market Research &amp; Risk Sandbox</p><p class="meta">{e(cfg["strategy"])} · {e(cfg["asset"])} · {e(data["evaluation_start"][:10])} → {e(data["evaluation_end"][:10])}<br>
 Experiment {e(artifact["experiment_id"])} · numerical engine {e(artifact["engine"]["sha256"][:16])}</p>
 <div class="verdict"><strong>{e(critic["verdict"])} · {e(critic["conclusion"])}</strong><p>{e(critic["interpretation"])}</p></div>
 <div class="cards">{cards}</div><h2>Hypothesis</h2><p>{e(artifact["strategy"]["hypothesis"])}</p>
@@ -393,7 +401,7 @@ Unrealized PnL: {result["ending_position"]["unrealized_pnl"]:.2f} USDT. Remainin
 <h2>Assumptions and failure modes</h2><ul>{"".join("<li>" + e(s) + "</li>" for s in artifact["strategy"]["assumptions"] + artifact["strategy"]["failure_modes"])}</ul>
 <p>No intrabar fills, live liquidity, order-book impact, funding, taxes or lot-size model. Single-asset concentration and retrospective selection remain unresolved.
 Agent integration protocols exist; no LLM agent is connected.</p><h2>Conclusion</h2><strong>{e(critic["conclusion"])}</strong>
-<footer><p>AI proposes. Evidence tests. Risk constrains. Critic challenges.</p><p>{e(DISCLAIMER)}</p><p>{e(dataset_terms(artifact))}</p></footer></main></body></html>"""
+<footer><p>Baselines propose. Historical evidence tests. Risk constrains. Rules challenge.</p><p>{e(DISCLAIMER)}</p><p>{e(dataset_terms(artifact))}</p></footer></main></body></html>"""
 
 
 def trades_csv(artifact: dict[str, Any]) -> str:

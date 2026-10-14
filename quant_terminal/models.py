@@ -8,6 +8,11 @@ from datetime import date, datetime
 from typing import Any
 
 
+def finite_number(value: Any) -> bool:
+    """Financial inputs are real numbers, never booleans or implicit string conversions."""
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+
 @dataclass(frozen=True)
 class Bar:
     timestamp: datetime
@@ -34,7 +39,7 @@ class CostModel:
     def __post_init__(self) -> None:
         for name in ("fee_bps", "slippage_bps"):
             value = getattr(self, name)
-            if not math.isfinite(value) or not 0 <= value < 10_000:
+            if not finite_number(value) or not 0 <= value < 10_000:
                 raise ValueError(f"{name} must be finite and in [0, 10000).")
 
     @property
@@ -58,7 +63,7 @@ class RiskConfig:
     def __post_init__(self) -> None:
         for name in ("max_position", "max_exposure", "max_drawdown"):
             value = getattr(self, name)
-            if not math.isfinite(value) or not 0 < value <= 1:
+            if not finite_number(value) or not 0 < value <= 1:
                 raise ValueError(f"{name} must be finite and in (0, 1].")
 
     @property
@@ -79,20 +84,31 @@ class ExperimentConfig:
     periods_per_year: int = 365
 
     def __post_init__(self) -> None:
-        if not math.isfinite(self.initial_capital) or self.initial_capital <= 0:
+        if not finite_number(self.initial_capital) or self.initial_capital <= 0:
             raise ValueError("initial_capital must be finite and positive.")
         if self.strategy not in ("momentum", "mean_reversion"):
             raise ValueError("strategy must be momentum or mean_reversion.")
-        if not self.asset or not self.asset.isalnum() or self.asset != self.asset.upper():
+        if (
+            not isinstance(self.asset, str)
+            or not self.asset
+            or not self.asset.isalnum()
+            or self.asset != self.asset.upper()
+        ):
             raise ValueError("asset must be an uppercase alphanumeric symbol.")
+        if not isinstance(self.params, dict) or any(not isinstance(k, str) for k in self.params):
+            raise ValueError("Strategy parameters must be a JSON object with string keys.")
+        if not isinstance(self.risk, RiskConfig) or not isinstance(self.costs, CostModel):
+            raise ValueError("risk and costs must use the validated configuration contracts.")
         try:
             start, end = (
                 date.fromisoformat(self.evaluation_start),
                 date.fromisoformat(self.evaluation_end),
             )
-        except ValueError as exc:
+        except (ValueError, TypeError) as exc:
             raise ValueError("Evaluation dates must use YYYY-MM-DD.") from exc
+        if start.isoformat() != self.evaluation_start or end.isoformat() != self.evaluation_end:
+            raise ValueError("Evaluation dates must use YYYY-MM-DD.")
         if start >= end:
             raise ValueError("evaluation_start must precede evaluation_end.")
-        if not isinstance(self.periods_per_year, int) or self.periods_per_year <= 0:
+        if type(self.periods_per_year) is not int or self.periods_per_year <= 0:
             raise ValueError("periods_per_year must be a positive integer.")

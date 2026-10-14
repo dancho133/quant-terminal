@@ -40,6 +40,18 @@ def reviewer_fixture():
 
 
 class ExperimentTests(unittest.TestCase):
+    def test_annualized_turnover_and_report_use_the_configured_year_length(self):
+        from quant_terminal.experiment import run_experiment
+        from quant_terminal.models import ExperimentConfig
+        from quant_terminal.reports import markdown_report
+
+        artifact = run_experiment(ExperimentConfig(strategy="mean_reversion", periods_per_year=252))
+        observed = next(
+            c["observed"] for c in artifact["critic"]["checks"] if c["code"] == "EXCESSIVE_TURNOVER"
+        )
+        self.assertAlmostEqual(observed, 5.780982133655282, places=8)
+        self.assertIn("sqrt(252)", markdown_report(artifact))
+
     def test_custom_csv_reports_preserve_unknown_provenance_and_terms(self):
         from quant_terminal.data import load_dataset
         from quant_terminal.experiment import run_experiment

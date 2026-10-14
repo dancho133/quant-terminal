@@ -1,3 +1,5 @@
+> Historical initial design/plan. Current implemented scope, fixes and evidence are in README.md, REVIEWER_GUIDE.md and examples/verification.md. Future agent architecture here does not imply working LLM agents.
+
 # Quant Terminal Implementation Plan
 
 > For agentic workers: use superpowers:executing-plans for implementation in this session.

@@ -1,3 +1,5 @@
+> Historical initial design/plan. Current implemented scope, fixes and evidence are in README.md, REVIEWER_GUIDE.md and examples/verification.md. Future agent architecture here does not imply working LLM agents.
+
 # Quant Terminal design
 
 Purpose: a runnable engineering portfolio for a trading/AI team. This is an experimental historical research and paper-trading sandbox. No live execution, LLM service, profitability claim, or secrets.
