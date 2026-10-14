@@ -15,6 +15,24 @@ from quant_terminal.models import ExperimentConfig
 
 
 class VerificationTests(unittest.TestCase):
+    def test_exported_configuration_must_obey_the_typed_input_contract(self):
+        from quant_terminal.verify import check_artifact
+
+        config = ExperimentConfig(strategy="mean_reversion")
+        dataset = load_dataset()
+        artifact = run_experiment(config, dataset)
+        for mutate in (
+            lambda a: a.__setitem__("schema_version", True),
+            lambda a: a["config"]["params"].__setitem__("exit_z", False),
+            lambda a: a["config"].__setitem__("periods_per_year", 365.0),
+        ):
+            changed = copy.deepcopy(artifact)
+            mutate(changed)
+            with self.subTest(config=changed["config"]):
+                self.assertTrue(
+                    any(not check["passed"] for check in check_artifact(changed, dataset, config))
+                )
+
     def test_offline_verifier_executes_both_strategies_and_writes_traceable_summary(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = subprocess.run(

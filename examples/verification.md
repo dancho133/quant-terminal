@@ -11,7 +11,7 @@ Windows, CPython 3.12.13. uv.lock pins the installed dependencies. The numerical
 | uv sync --locked --group dev | Exit 0; 47 packages resolved, 45 checked |
 | uv run --locked ruff check . | Exit 0; All checks passed |
 | uv run --locked ruff format --check . | Exit 0; 35 Python files already formatted |
-| uv run --locked python -m unittest discover -s tests -v | Exit 0; **47 tests**, no failures/errors |
+| uv run --locked python -m unittest discover -s tests -v | Exit 0; **48 tests**, no failures/errors |
 | uv run --offline --locked quant-terminal-demo --no-ui | Exit 0; both real experiments exported |
 | uv run --offline --locked quant-terminal-verify | Exit 0; **12 aggregate checks**, failures empty |
 | uv build | Wheel and source distribution built, exit 0 |
@@ -23,7 +23,7 @@ Windows, CPython 3.12.13. uv.lock pins the installed dependencies. The numerical
 | Actual browser | Updated UI, all five tabs, real mean_reversion form submission and both final IDs checked |
 | Report rendering | Self-contained updated HTML exported to disk; embedded figures rendered in browser |
 
-The test log contains an intentionally injected checksum failure message from the bootstrap-error regression; the **suite summary is 47 tests / OK / exit 0**. Streamlit AppTest can emit its standard bare-mode missing ScriptRunContext warning; no UI exception or Arrow repair was observed.
+The test log contains an intentionally injected checksum failure message from the bootstrap-error regression; the **suite summary is 48 tests / OK / exit 0**. Streamlit AppTest can emit its standard bare-mode missing ScriptRunContext warning; no UI exception or Arrow repair was observed.
 
 Current default outputs: momentum **986c27a8aad849958ea3**, −0.62%, 14 closed episodes, REJECT; mean_reversion **67c6d758d1a82087d6ed**, +4.76%, 15 closed episodes, CAUTION. Both remain retrospective historical simulations.
 
@@ -31,7 +31,7 @@ Current default outputs: momentum **986c27a8aad849958ea3**, −0.62%, 14 closed 
 
 At **e7cf3bd**, 26 tests passed and the IDs were bbc87bc1d4ee46e327d3 / 7838b1e5f5eb082c7e1b. Its final [CI run](https://github.com/dancho133/quant-terminal/actions/runs/38438374392) passed all four Linux/Windows × Python 3.11/3.12 jobs. That historical result does not validate this changed source. [ci-result.json](ci-result.json) now records the current source run separately from that baseline.
 
-The updated numerical source is commit **77dbb5e0b9caf355fb31f052f4ddf9fb0202a230**. Its [verified CI run](https://github.com/dancho133/quant-terminal/actions/runs/38525185413) completed successfully in all four jobs. The fresh clone and installed wheel both reproduced that engine. [verification.json](verification.json) captures a clean checkout with 14 checks including comparison to current examples, no failures, and the exact source SHA. Its absolute paths refer to the capture machine; rerun the command to obtain local paths. Later evidence-only commits do not change numerical source. Use the generated verification.json for checked_commit, worktree_dirty, engine/data hashes, commands, checks, failures and artifact_paths. A dirty checkout's SHA is its base commit; the source fingerprint identifies the executed files. An installed wheel's source SHA is explicitly declared, not independently inferred.
+The updated numerical source is commit **77dbb5e0b9caf355fb31f052f4ddf9fb0202a230**. Its [verified CI run](https://github.com/dancho133/quant-terminal/actions/runs/38525185413) completed successfully in all four jobs. The fresh clone and installed wheel both reproduced that engine. [verification.json](verification.json) captures a clean checkout with 14 checks including comparison to current examples, no failures, and the exact source SHA. Its absolute paths refer to the capture machine; rerun the command to obtain local paths. The numerical engine remains the same; the exported configuration checker was subsequently tightened to reject boolean and noninteger configuration fields. The current local suite contains 48 tests; the recorded source CI run above contains 47. Current-head CI is authoritative for the tightened checker. Use the generated verification.json for checked_commit, worktree_dirty, engine/data hashes, commands, checks, failures and artifact_paths. A dirty checkout's SHA is its base commit; the source fingerprint identifies the executed files. An installed wheel's source SHA is explicitly declared, not independently inferred.
 
 ## Scope and unavailable checks
 

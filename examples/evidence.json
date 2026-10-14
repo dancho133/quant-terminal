@@ -7,6 +7,7 @@
   "dataset_hash": "c2d7fb5f1c417ebe63a471b88ae2df27c80e0cb7de95e4361ea5ae0f98628c91",
   "date": "2026-10-14",
   "engine_hash": "cad560d776cb4be902fd983a28edf6a27815dd46e94cc173edb436e7bb09cce8",
+  "exported_type_contract_regression": true,
   "files": {
     "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-mean-reversion.jpg": {
       "bytes": 39496,
@@ -93,8 +94,8 @@
       "sha256": "c81180592e13e8d14f0b29e135d02e459389f2e52ea6e59ba5357c5003bc868b"
     },
     "examples/test-output.txt": {
-      "bytes": 8440,
-      "sha256": "a13f2a18633f015906dcf94b1534f073e8ae2f41254f54f1d5cca8ae394bac9f"
+      "bytes": 8668,
+      "sha256": "591d377392397e30f7ff7f486879fcee188eed191934a0c71f3baa69f3a7f879"
     },
     "examples/verification.json": {
       "bytes": 3739,
@@ -103,7 +104,7 @@
   },
   "fresh_clone_tests": 47,
   "fresh_clone_verification_checks": 14,
-  "local_unittest_count": 47,
+  "local_unittest_count": 48,
   "numeric_comparison": {
     "absolute_tolerance": 1e-10,
     "figures": "structure only; never byte equality",

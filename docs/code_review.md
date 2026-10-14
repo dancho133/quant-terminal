@@ -32,6 +32,8 @@ The checker now validates complete dataset/config/source identity; reconstructs 
 
 `tests.test_verification` deliberately changes cash, PnL, fees, signal times, config, engine/data metadata, approval/cap events, maximum drawdown, pending flags, comparator, critic, stress results, NaN, CSV and SVG. This tests that the checker can reject damaged evidence; it is not a proof of complete model correctness.
 
+A final type regression showed Python dictionary equality accepting False as numeric zero and 365.0 as integer 365 in exported configuration. The checker now reconstructs that configuration through the same validated input contracts and requires an integer schema version. `test_exported_configuration_must_obey_the_typed_input_contract` fails on the former behavior and rejects all three corruptions after the fix. This changes verification, not numerical results or experiment IDs.
+
 ## Remaining review limits
 
 Account replay does not call the production simulator, RiskManager or metric calculator, but it uses shared feature/strategy functions and standard floating-point arithmetic. Stress reruns use the same simulator; they verify configuration/export consistency, not an alternative market model. Synthetic fixtures validate arithmetic and chronology rather than market profitability.

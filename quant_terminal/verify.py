@@ -26,7 +26,7 @@ from quant_terminal.experiment import (
     normalized_config,
 )
 from quant_terminal.features import build_features
-from quant_terminal.models import Dataset, ExperimentConfig
+from quant_terminal.models import CostModel, Dataset, ExperimentConfig, RiskConfig
 from quant_terminal.strategies import make_strategy
 
 REL_TOL = 1e-10
@@ -376,8 +376,21 @@ def check_artifact(
             checks.append({"name": name, "passed": False, "detail": str(exc)})
 
     def identity() -> None:
-        require(artifact["schema_version"] == 1, "unsupported schema")
+        require(
+            type(artifact["schema_version"]) is int and artifact["schema_version"] == 1,
+            "unsupported schema",
+        )
         require(artifact["engine_version"] == __version__, "engine version mismatch")
+        raw = artifact["config"]
+        exported_config = normalized_config(
+            ExperimentConfig(
+                **(raw | {"risk": RiskConfig(**raw["risk"]), "costs": CostModel(**raw["costs"])})
+            )
+        )
+        require(
+            asdict(exported_config) == asdict(config),
+            "exported configuration input contract mismatch",
+        )
         require(artifact["config"] == asdict(config), "configuration mismatch")
         require(artifact["engine"] == engine_fingerprint(), "numerical engine identity mismatch")
         require(

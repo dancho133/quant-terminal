@@ -12,11 +12,11 @@ test_risk_rejects_invalid_oversized_unaffordable_and_short_orders (test_backtest
 test_small_positive_position_is_not_discarded_at_high_price (test_backtest_risk.BacktestRiskTests.test_small_positive_position_is_not_discarded_at_high_price) ... ok
 test_target_caps_apply_to_post_cost_equity_and_preserve_proposal (test_backtest_risk.BacktestRiskTests.test_target_caps_apply_to_post_cost_equity_and_preserve_proposal) ... ok
 test_zero_target_sells_exact_holdings_without_a_rounding_residue (test_backtest_risk.BacktestRiskTests.test_zero_target_sells_exact_holdings_without_a_rounding_residue) ... ok
-test_dashboard_runs_all_five_tabs_and_submits_a_new_strategy (test_dashboard.DashboardTests.test_dashboard_runs_all_five_tabs_and_submits_a_new_strategy) ... 2026-10-14 11:45:16.765 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_dashboard_runs_all_five_tabs_and_submits_a_new_strategy (test_dashboard.DashboardTests.test_dashboard_runs_all_five_tabs_and_submits_a_new_strategy) ... 2026-10-14 12:34:24.572 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_form_draft_does_not_replace_displayed_experiment (test_dashboard.DashboardTests.test_form_draft_does_not_replace_displayed_experiment) ... 2026-10-14 11:45:27.348 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_form_draft_does_not_replace_displayed_experiment (test_dashboard.DashboardTests.test_form_draft_does_not_replace_displayed_experiment) ... 2026-10-14 12:34:38.090 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_structured_critic_fields_render_without_arrow_type_repair (test_dashboard.DashboardTests.test_structured_critic_fields_render_without_arrow_type_repair) ... 2026-10-14 11:45:29.150 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_structured_critic_fields_render_without_arrow_type_repair (test_dashboard.DashboardTests.test_structured_critic_fields_render_without_arrow_type_repair) ... 2026-10-14 12:34:40.480 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
 test_csv_rejects_extra_and_missing_row_fields (test_data_features.DataFeatureTests.test_csv_rejects_extra_and_missing_row_fields) ... ok
 test_daily_schema_rejects_missing_duplicate_and_unordered_bars (test_data_features.DataFeatureTests.test_daily_schema_rejects_missing_duplicate_and_unordered_bars) ... ok
@@ -43,6 +43,7 @@ test_parameters_must_be_a_mapping_with_string_keys (test_validation.ValidationTe
 test_requested_window_cannot_be_silently_clipped_to_dataset (test_validation.ValidationTests.test_requested_window_cannot_be_silently_clipped_to_dataset) ... ok
 test_unterminated_csv_quote_is_not_a_valid_number (test_validation.ValidationTests.test_unterminated_csv_quote_is_not_a_valid_number) ... ok
 test_check_only_mode_returns_nonzero_for_missing_or_damaged_artifact (test_verification.VerificationTests.test_check_only_mode_returns_nonzero_for_missing_or_damaged_artifact) ... ok
+test_exported_configuration_must_obey_the_typed_input_contract (test_verification.VerificationTests.test_exported_configuration_must_obey_the_typed_input_contract) ... ok
 test_fabricated_robustness_cannot_pass_with_a_recomputed_critic (test_verification.VerificationTests.test_fabricated_robustness_cannot_pass_with_a_recomputed_critic) ... ok
 test_initialization_failure_is_recorded_in_summary (test_verification.VerificationTests.test_initialization_failure_is_recorded_in_summary) ... ok
 test_numerical_comparison_allows_python_metadata_but_rejects_changed_result (test_verification.VerificationTests.test_numerical_comparison_allows_python_metadata_but_rejects_changed_result) ... ok
@@ -50,7 +51,7 @@ test_offline_verifier_executes_both_strategies_and_writes_traceable_summary (tes
 test_verifier_catches_independent_tampering_of_accounting_and_identity (test_verification.VerificationTests.test_verifier_catches_independent_tampering_of_accounting_and_identity) ... ok
 
 ----------------------------------------------------------------------
-Ran 47 tests in 66.325s
+Ran 48 tests in 84.783s
 
 OK
 Technical verification: FAILED � initialization: CSV checksum does not match its provenance manifest.
