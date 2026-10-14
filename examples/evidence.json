@@ -9,24 +9,24 @@
   "engine_hash": "cad560d776cb4be902fd983a28edf6a27815dd46e94cc173edb436e7bb09cce8",
   "files": {
     "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-mean-reversion.jpg": {
-      "bytes": 46746,
-      "sha256": "2095b4dfb8851bbc9456f5d07ccec7fba02551ec90984a21ddad728f4d46a9f1"
+      "bytes": 39496,
+      "sha256": "0ad5af705a10f50b8ab82937552c066709f73e7746c910ec484ccdb405388fbc"
     },
     "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-overview.jpg": {
-      "bytes": 30186,
-      "sha256": "33ce219e230c168afb7a87ccde1779e1e83062121d70ec0aa24f6b87ce068aea"
+      "bytes": 36290,
+      "sha256": "8f1647d2f4dce87a52b7420357536e34cb8b53e70a84437571af0e3f9d53958c"
     },
     "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-performance.jpg": {
-      "bytes": 41811,
-      "sha256": "e7d360810c04401b1dd399622977d3e20d06c95b3eda6c9adc42a28d650039d8"
+      "bytes": 37201,
+      "sha256": "5576cf79dc16446190285682c531c9d24e478de7da4fed8586bbac4c766f158c"
     },
     "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-research.jpg": {
-      "bytes": 45913,
-      "sha256": "f04f32edfc315fd0ba25ab5f269c5ef05382b176542e459ce47782bdb3bc98b6"
+      "bytes": 41443,
+      "sha256": "c39454eafee1a0cbf0f26b813a9f5698e304d0469f9e0c32adfa130592493554"
     },
     "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/dashboard-risk.jpg": {
-      "bytes": 42534,
-      "sha256": "9bf64b556be9fc1905761833ebd4f8865f6188a855b051c7b649d0cd97cbcbf9"
+      "bytes": 37199,
+      "sha256": "f5b819d4dbb4eda50346386ff8e8bac58eda75dac44c6b62b10b083f9d4205c5"
     },
     "C:/Users/\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440/Documents/Codex/quant-terminal/docs/images/research-report.jpg": {
       "bytes": 33536,
