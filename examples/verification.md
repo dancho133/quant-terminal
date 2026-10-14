@@ -18,6 +18,8 @@ Windows, CPython 3.12.13. uv.lock pins the installed dependencies. The numerical
 | Locked runtime requirements installed in a new venv | 43 dependencies installed; no system-site-packages |
 | Built wheel installed, run outside the source checkout | Import path is the new venv's Lib/site-packages/quant_terminal |
 | Installed wheel verifier with --reference-dir source results | Exit 0; **14 checks**, both canonical JSON artifacts equal within stated tolerances |
+| Fresh public branch clone + fresh locked venv | Ruff, all 47 tests, offline demo and verifier/reference comparison passed; checkout stayed clean |
+| GitHub Actions for source commit 77dbb5e | Four jobs passed: Ubuntu/Windows × Python 3.11/3.12; lint, format, 47 tests, demo, verification and packaging |
 | Actual browser | Updated UI, all five tabs, real mean_reversion form submission and both final IDs checked |
 | Report rendering | Self-contained updated HTML exported to disk; embedded figures rendered in browser |
 
@@ -27,9 +29,9 @@ Current default outputs: momentum **986c27a8aad849958ea3**, −0.62%, 14 closed 
 
 ## Revision and CI provenance
 
-At **e7cf3bd**, 26 tests passed and the IDs were bbc87bc1d4ee46e327d3 / 7838b1e5f5eb082c7e1b. Its final [CI run](https://github.com/dancho133/quant-terminal/actions/runs/38438374392) passed all four Linux/Windows × Python 3.11/3.12 jobs. That historical result does not validate this changed source. ci-result.json currently retains the earlier baseline run record until updated evidence is collected.
+At **e7cf3bd**, 26 tests passed and the IDs were bbc87bc1d4ee46e327d3 / 7838b1e5f5eb082c7e1b. Its final [CI run](https://github.com/dancho133/quant-terminal/actions/runs/38438374392) passed all four Linux/Windows × Python 3.11/3.12 jobs. That historical result does not validate this changed source. [ci-result.json](ci-result.json) now records the current source run separately from that baseline.
 
-New checkout/CI results will be recorded against their actual source commit. Use the generated verification.json for checked_commit, worktree_dirty, engine/data hashes, commands, checks, failures and artifact_paths. A dirty checkout's SHA is its base commit; the source fingerprint identifies the executed files. An installed wheel's source SHA is explicitly declared, not independently inferred.
+The updated numerical source is commit **77dbb5e0b9caf355fb31f052f4ddf9fb0202a230**. Its [verified CI run](https://github.com/dancho133/quant-terminal/actions/runs/38525185413) completed successfully in all four jobs. The fresh clone and installed wheel both reproduced that engine. [verification.json](verification.json) captures a clean checkout with 14 checks including comparison to current examples, no failures, and the exact source SHA. Its absolute paths refer to the capture machine; rerun the command to obtain local paths. Later evidence-only commits do not change numerical source. Use the generated verification.json for checked_commit, worktree_dirty, engine/data hashes, commands, checks, failures and artifact_paths. A dirty checkout's SHA is its base commit; the source fingerprint identifies the executed files. An installed wheel's source SHA is explicitly declared, not independently inferred.
 
 ## Scope and unavailable checks
 

@@ -1,5 +1,8 @@
 {
   "browser": "Actual running Streamlit UI and generated report; browser-download persistence unverified",
+  "checked_source_commit": "77dbb5e0b9caf355fb31f052f4ddf9fb0202a230",
+  "ci_jobs_passed": 4,
+  "ci_run": "https://github.com/dancho133/quant-terminal/actions/runs/38525185413",
   "code_review": "AI-assisted internal software review; no external certification",
   "dataset_hash": "c2d7fb5f1c417ebe63a471b88ae2df27c80e0cb7de95e4361ea5ae0f98628c91",
   "date": "2026-10-14",
@@ -85,11 +88,21 @@
       "bytes": 26849,
       "sha256": "ecc04322ced8fa300a6bd3b1919846eda65f3fab91033b1fe174d6cb37ae5eba"
     },
+    "examples/ci-result.json": {
+      "bytes": 16686,
+      "sha256": "c81180592e13e8d14f0b29e135d02e459389f2e52ea6e59ba5357c5003bc868b"
+    },
     "examples/test-output.txt": {
       "bytes": 8440,
       "sha256": "a13f2a18633f015906dcf94b1534f073e8ae2f41254f54f1d5cca8ae394bac9f"
+    },
+    "examples/verification.json": {
+      "bytes": 3739,
+      "sha256": "e195828743ce64f0de6a26aa1ad2c5fef022c23e797b3270a1fdb0553569a1f3"
     }
   },
+  "fresh_clone_tests": 47,
+  "fresh_clone_verification_checks": 14,
   "local_unittest_count": 47,
   "numeric_comparison": {
     "absolute_tolerance": 1e-10,
@@ -99,6 +112,7 @@
     ],
     "relative_tolerance": 1e-10
   },
+  "secret_pattern_findings": 0,
   "source_verification_checks": 12,
   "wheel_comparison_checks": 14
 }
